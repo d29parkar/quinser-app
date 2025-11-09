@@ -1,0 +1,76 @@
+[
+  {
+    "id": 1,
+    "name": "Antibiotic Capsules 500mg",
+    "category": "Antibiotics",
+    "description": "Broad-spectrum antibiotic for treating bacterial infections. WHO-GMP certified manufacturing."
+  },
+  {
+    "id": 2,
+    "name": "Pain Relief Tablets",
+    "category": "Analgesics",
+    "description": "Fast-acting pain relief medication for acute and chronic pain management."
+  },
+  {
+    "id": 3,
+    "name": "Cardiovascular Support",
+    "category": "Cardiology",
+    "description": "Advanced cardiovascular medication for heart health and blood pressure management."
+  },
+  {
+    "id": 4,
+    "name": "Diabetes Management",
+    "category": "Endocrinology",
+    "description": "Comprehensive diabetes care solution with controlled release formulation."
+  },
+  {
+    "id": 5,
+    "name": "Respiratory Inhaler",
+    "category": "Pulmonology",
+    "description": "Effective bronchodilator for asthma and chronic obstructive pulmonary disease."
+  },
+  {
+    "id": 6,
+    "name": "Gastrointestinal Relief",
+    "category": "Gastroenterology",
+    "description": "Gentle and effective treatment for digestive disorders and acid reflux."
+  },
+  {
+    "id": 7,
+    "name": "Multivitamin Complex",
+    "category": "Nutritional Supplements",
+    "description": "Comprehensive multivitamin formula with essential vitamins and minerals."
+  },
+  {
+    "id": 8,
+    "name": "Antifungal Cream",
+    "category": "Dermatology",
+    "description": "Topical antifungal treatment for skin infections and fungal conditions."
+  },
+  {
+    "id": 9,
+    "name": "Antihistamine Syrup",
+    "category": "Allergy",
+    "description": "Fast-acting antihistamine for allergy relief and symptom management."
+  },
+  {
+    "id": 10,
+    "name": "Bone Health Supplement",
+    "category": "Orthopedics",
+    "description": "Calcium and vitamin D supplement for maintaining bone strength and density."
+  },
+  {
+    "id": 11,
+    "name": "Eye Drops Solution",
+    "category": "Ophthalmology",
+    "description": "Sterile ophthalmic solution for dry eyes and eye irritation relief."
+  },
+  {
+    "id": 12,
+    "name": "Antiviral Tablets",
+    "category": "Antivirals",
+    "description": "Effective antiviral medication for treating viral infections and boosting immunity."
+  }
+]
+
+
