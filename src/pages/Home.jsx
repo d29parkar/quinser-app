@@ -57,18 +57,25 @@ const Home = () => {
           <div className="text-center mb-16">
             {/* Logo - Blended with background */}
             <div className="mb-12 flex justify-center">
-              <img 
-                src="/assets/logo.png" 
-                alt="Quinser Pharmaceuticals Private Limited" 
-                className="h-28 md:h-40 w-auto mix-blend-multiply opacity-90"
-              />
+              <div className="relative">
+                <img 
+                  src="/assets/logo.png" 
+                  alt="Quinser Pharmaceuticals Private Limited" 
+                  className="h-28 md:h-40 w-auto"
+                  style={{ 
+                    mixBlendMode: 'multiply',
+                    filter: 'brightness(1.1) contrast(1.15)',
+                    backgroundColor: 'transparent'
+                  }}
+                />
+              </div>
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-bold text-text mb-6 tracking-tight">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent pb-2 leading-tight">
               Quality, Integrity and Service
             </h1>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto mb-8">
-              35 years of professional expertise in the pharmaceutical sector led to the formation of Quinser Pharmaceuticals Private Limited, a venture predicated on its foundational principles of Quality, Integrity, and Service.
+              35 years of professional expertise in the pharmaceutical sector led to the formation of <span className="font-semibold text-primary">Quinser Pharmaceuticals Private Limited</span>, a venture predicated on its foundational principles of <span className="font-semibold text-secondary">Quality</span>, <span className="font-semibold text-primary">Integrity</span>, and <span className="font-semibold text-secondary">Service</span>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -92,15 +99,15 @@ const Home = () => {
       <section className="py-16 bg-gradient-to-b from-card-bg to-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-text mb-6 text-center">About Quinser</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">About Quinser</h2>
             <p className="text-lg text-text-secondary leading-relaxed mb-6">
-              Our company's name <span className="font-semibold text-text">QUINSER</span> aptly describes our ethos and underscores our commitment to the core values: <span className="font-semibold text-text">Quality, Integrity, and Service</span>. 35 years of professional expertise in the pharmaceutical sector led to the formation of Quinser Pharmaceuticals Private Limited, a venture predicated on its foundational principles of Quality-Integrity-Service.
+              Our company's name <span className="font-semibold text-secondary text-xl">QUINSER</span> aptly describes our ethos and underscores our commitment to the core values: <span className="font-semibold text-primary">Quality</span>, <span className="font-semibold text-secondary">Integrity</span>, and <span className="font-semibold text-primary">Service</span>. 35 years of professional expertise in the pharmaceutical sector led to the formation of <span className="font-serif text-primary font-semibold">Quinser Pharmaceuticals Private Limited</span>, a venture predicated on its foundational principles of <span className="text-primary font-semibold">Quality</span>-<span className="text-secondary font-semibold">Integrity</span>-<span className="text-primary font-semibold">Service</span>.
             </p>
             <p className="text-lg text-text-secondary leading-relaxed mb-6">
-              The team's grounding caters to market survey-based product development aimed at meeting consumer requirements, along with product management, promotional activities, sales oversight, distribution, training, administration, finance, and accounting. Only credible businesses with integral quality assurance certifications and accreditations from globally recognised organisations including <span className="font-semibold text-text">WHO-GMP</span>, are authorised to manufacture our products.
+              The team's grounding caters to market survey-based product development aimed at meeting consumer requirements, along with product management, promotional activities, sales oversight, distribution, training, administration, finance, and accounting. Only credible businesses with integral quality assurance certifications and accreditations from globally recognised organisations including <span className="font-semibold text-primary">WHO-GMP</span>, are authorised to manufacture our products.
             </p>
             <p className="text-lg text-text-secondary leading-relaxed">
-              We are planning to launch very thoughtful products more in the <span className="font-semibold text-text">preventive, health restorative, and infertility segments</span>. They will be well supported by documented and published evidence from medical textbooks and journals, ensuring our products are backed by scientific rigor and clinical validation.
+              We are planning to launch very thoughtful products more in the <span className="font-semibold text-primary">preventive</span>, <span className="font-semibold text-secondary">health restorative</span>, and <span className="font-semibold text-primary">infertility segments</span>. They will be well supported by documented and published evidence from medical textbooks and journals, ensuring our products are backed by scientific rigor and clinical validation.
             </p>
           </div>
         </div>
@@ -109,7 +116,7 @@ const Home = () => {
       {/* Founders Section */}
       <section className="py-16 bg-gradient-to-b from-background via-card-bg to-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-text text-center mb-12">Our Leadership</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Our Leadership</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {founders.map((founder, index) => (
               <div
@@ -123,8 +130,8 @@ const Home = () => {
                     className="w-32 h-32 rounded-full mx-auto object-cover image-desaturate"
                   />
                 </div>
-                <h3 className="text-xl font-semibold text-text text-center mb-2">{founder.name}</h3>
-                <p className="text-accent text-center font-medium mb-2">{founder.designation}</p>
+                <h3 className="text-xl font-semibold text-primary text-center mb-2">{founder.name}</h3>
+                <p className="text-secondary text-center font-medium mb-2">{founder.designation}</p>
                 <p className="text-text-secondary text-sm text-center mb-4">{founder.location}</p>
                 <p className="text-text-secondary text-sm leading-relaxed text-center">{founder.bio}</p>
               </div>
@@ -138,22 +145,22 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-lg border border-primary/10">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-text mb-6 text-center">Company Information</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Company Information</h2>
               <div className="space-y-4 text-text-secondary">
                 <p className="text-lg">
-                  <span className="font-semibold text-text">Registered Name:</span> Quinser Pharmaceuticals Private Limited
+                  <span className="font-semibold text-primary">Registered Name:</span> <span className="font-serif text-primary">Quinser Pharmaceuticals Private Limited</span>
                 </p>
                 <p className="text-lg">
-                  <span className="font-semibold text-text">CIN:</span> U46497MH2025PTC453159
+                  <span className="font-semibold text-primary">CIN:</span> <span className="text-text">U46497MH2025PTC453159</span>
                 </p>
                 <p className="text-lg">
-                  <span className="font-semibold text-text">Incorporation Date:</span> 26th July, 2025
+                  <span className="font-semibold text-primary">Incorporation Date:</span> <span className="text-text">26th July, 2025</span>
                 </p>
                 <p className="text-lg">
-                  <span className="font-semibold text-text">Registered Office:</span> Plot No 72, Flat No 306 A, Vishwa Highlands CHSL Ltd, Raigad, Maharashtra, India - 410209
+                  <span className="font-semibold text-primary">Registered Office:</span> <span className="text-text">Plot No 72, Flat No 306 A, Vishwa Highlands CHSL Ltd, Raigad, Maharashtra, India - 410209</span>
                 </p>
                 <p className="text-lg">
-                  <span className="font-semibold text-text">Activity:</span> Wholesale of pharmaceutical and medical goods
+                  <span className="font-semibold text-primary">Activity:</span> <span className="text-text">Wholesale of pharmaceutical and medical goods</span>
                 </p>
               </div>
             </div>

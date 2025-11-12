@@ -24,5 +24,17 @@
   .image-desaturate {
     filter: grayscale(20%) brightness(0.98);
   }
+  
+  .logo-blend {
+    /* Remove white background and blend with page background */
+    mix-blend-mode: multiply;
+    filter: brightness(1.05) contrast(1.1);
+  }
+  
+  .logo-blend-light {
+    /* Alternative for light backgrounds - makes white transparent */
+    mix-blend-mode: screen;
+    filter: brightness(0.95);
+  }
 }
 

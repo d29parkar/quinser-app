@@ -22,6 +22,8 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'Poppins', 'system-ui', 'sans-serif'],
+        serif: ['Georgia', 'Times New Roman', 'serif'],
+        display: ['Georgia', 'Times New Roman', 'serif'],
       },
       letterSpacing: {
         tight: '-0.5px',
