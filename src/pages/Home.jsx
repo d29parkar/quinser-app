@@ -142,31 +142,74 @@ const Home = () => {
 
       {/* Company Info Section */}
       <section className="py-16 bg-gradient-to-br from-primary/5 via-card-bg to-accent/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-lg border border-primary/10">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Company Information</h2>
-              <div className="space-y-4 text-text-secondary">
-                <p className="text-lg">
-                  <span className="font-semibold text-primary">Registered Name:</span> <span className="font-serif text-primary">Quinser Pharmaceuticals Private Limited</span>
-                </p>
-                <p className="text-lg">
-                  <span className="font-semibold text-primary">CIN:</span> <span className="text-text">U46497MH2025PTC453159</span>
-                </p>
-                <p className="text-lg">
-                  <span className="font-semibold text-primary">Incorporation Date:</span> <span className="text-text">26th July, 2025</span>
-                </p>
-                <p className="text-lg">
-                  <span className="font-semibold text-primary">Registered Office:</span> <span className="text-text">Plot No 72, Flat No 306 A, Vishwa Highlands CHSL Ltd, Raigad, Maharashtra, India - 410209</span>
-                </p>
-                <p className="text-lg">
-                  <span className="font-semibold text-primary">Activity:</span> <span className="text-text">Wholesale of pharmaceutical and medical goods</span>
-                </p>
-              </div>
-            </div>
-          </div>
+  <div className="max-w-5xl mx-auto px-4 sm:px-6">
+    <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-primary/10 p-10">
+
+      <h2 className="text-3xl font-bold text-center mb-10
+        bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        Company Information
+      </h2>
+
+      <div className="space-y-10">
+
+        {/* Registered Name (full width) */}
+        <div>
+          <p className="text-sm font-semibold text-primary tracking-wide uppercase">
+            Registered Name
+          </p>
+          <p className="text-xl mt-1 text-gray-900">
+            Quinser Pharmaceuticals Private Limited
+          </p>
         </div>
-      </section>
+
+        {/* Two-column section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+
+          <div>
+            <p className="text-sm font-semibold text-primary tracking-wide uppercase">
+              CIN
+            </p>
+            <p className="text-lg mt-1 text-gray-900">
+              U46497MH2025PTC453159
+            </p>
+          </div>
+
+          <div>
+            <p className="text-sm font-semibold text-primary tracking-wide uppercase">
+              Incorporation Date
+            </p>
+            <p className="text-lg mt-1 text-gray-900">
+              26th July, 2025
+            </p>
+          </div>
+
+          <div className="md:col-span-2">
+            <p className="text-sm font-semibold text-primary tracking-wide uppercase">
+              Activity
+            </p>
+            <p className="text-lg mt-1 text-gray-900">
+              Wholesale of pharmaceutical and medical goods
+            </p>
+          </div>
+
+        </div>
+
+        {/* Registered Office (full width) */}
+        <div>
+          <p className="text-sm font-semibold text-primary tracking-wide uppercase">
+            Registered Office
+          </p>
+          <p className="text-lg mt-1 text-gray-900 leading-relaxed">
+            Plot No 72, Flat No 306 A, Vishwa Highlands CHSL Ltd, 
+            Raigad, Maharashtra, India — 410209
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
     </div>
   )
 }
