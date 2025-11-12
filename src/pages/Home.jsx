@@ -55,12 +55,12 @@ const Home = () => {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl opacity-50"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            {/* Logo - No white border */}
+            {/* Logo - Blended with background */}
             <div className="mb-12 flex justify-center">
               <img 
                 src="/assets/logo.png" 
                 alt="Quinser Pharmaceuticals Private Limited" 
-                className="h-28 md:h-40 w-auto drop-shadow-lg"
+                className="h-28 md:h-40 w-auto mix-blend-multiply opacity-90"
               />
             </div>
             
@@ -68,7 +68,7 @@ const Home = () => {
               Quality, Integrity and Service
             </h1>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto mb-8">
-              35 years of professional expertise in the pharmaceutical sector led to the formation of Quinser Pharmaceuticals Private Limited, a startup firm predicated on its foundational principles of Quality, Integrity, and Service.
+              35 years of professional expertise in the pharmaceutical sector led to the formation of Quinser Pharmaceuticals Private Limited, a venture predicated on its foundational principles of Quality, Integrity, and Service.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -94,7 +94,7 @@ const Home = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-text mb-6 text-center">About Quinser</h2>
             <p className="text-lg text-text-secondary leading-relaxed mb-6">
-              Our company's name <span className="font-semibold text-text">QUINSER</span> aptly describes our ethos and underscores our commitment to the core values: <span className="font-semibold text-text">Quality, Integrity, and Service</span>. 35 years of professional expertise in the pharmaceutical sector led to the formation of Quinser Pharmaceuticals Private Limited, a startup firm predicated on its foundational principles of Quality-Integrity-Service.
+              Our company's name <span className="font-semibold text-text">QUINSER</span> aptly describes our ethos and underscores our commitment to the core values: <span className="font-semibold text-text">Quality, Integrity, and Service</span>. 35 years of professional expertise in the pharmaceutical sector led to the formation of Quinser Pharmaceuticals Private Limited, a venture predicated on its foundational principles of Quality-Integrity-Service.
             </p>
             <p className="text-lg text-text-secondary leading-relaxed mb-6">
               The team's grounding caters to market survey-based product development aimed at meeting consumer requirements, along with product management, promotional activities, sales oversight, distribution, training, administration, finance, and accounting. Only credible businesses with integral quality assurance certifications and accreditations from globally recognised organisations including <span className="font-semibold text-text">WHO-GMP</span>, are authorised to manufacture our products.
