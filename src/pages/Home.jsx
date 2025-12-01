@@ -6,43 +6,37 @@ const Home = () => {
       name: "Ramkumar Kooliyadath",
       designation: "Director",
       location: "India",
-      bio: "With over two decades of experience in the pharmaceutical industry, Ramkumar brings deep expertise in business development and operations. Starting his career as a medical representative, he progressed through various roles, gaining comprehensive knowledge of the pharmaceutical market. He has extensive experience in sales management and distribution networks across multiple regions. His strategic vision and commitment to quality have been instrumental in establishing Quinser's foundation.",
-      photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop"
+      bio: "With over three decades of experience in the pharmaceutical industry, Ramkumar brings deep expertise in business development and operations. Starting his career as a medical representative, he progressed through various roles, gaining comprehensive knowledge of the pharmaceutical market. He has extensive experience in sales management and distribution networks across multiple regions. His strategic vision and commitment to quality have been instrumental in establishing Quinser's foundation."
     },
     {
       name: "Kiran Sudhakar Pimparkar",
       designation: "Director",
       location: "Jalgaon, India",
-      bio: "Kiran has been in the pharmaceutical industry for 25 years. He started his career as a medical representative, climbing to the position of Area Sales Manager in Fourrts India, where he managed over 8 districts in Maharashtra. He then started his own wholesale business, active in Jalgaon, Nashik, Akola, and Dhule. He brings extensive experience in marketing and quality, with a deep understanding of regional market dynamics and customer needs.",
-      photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop"
+      bio: "Kiran has been in the pharmaceutical industry for 25 years. He started his career as a medical representative, climbing to the position of area development manager. He then started his own wholesale business, active in Maharashtra state of India. He brings extensive experience in marketing and distribution with a deep understanding of regional market dynamics and customer needs."
     },
     {
       name: "Vishwanath Ananda Patil",
       designation: "Director",
       location: "India",
-      bio: "Vishwanath brings over 20 years of pharmaceutical industry experience, having worked across various segments from field sales to distribution management. His journey began as a medical representative, where he developed strong relationships with healthcare professionals. He progressed to regional management roles, overseeing sales operations across multiple territories. His expertise in supply chain management and market penetration strategies has been crucial in expanding Quinser's reach.",
-      photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=400&fit=crop"
+      bio: "Vishwanath brings over 20 years of pharmaceutical industry experience, having worked across various segments from field sales to distribution management. His journey began as a medical representative, where he developed strong relationships with healthcare professionals. He progressed to regional management roles, overseeing sales operations across multiple territories. His expertise in supply chain management and market penetration strategies has been crucial in expanding Quinser's reach."
     },
     {
       name: "Ajay Katare",
       designation: "Director",
       location: "India",
-      bio: "With a career spanning more than 22 years in pharmaceuticals, Ajay has built a strong foundation in sales, marketing, and business operations. Beginning as a medical representative, his exceptional performance led him to management positions where he oversaw multiple districts. He has extensive experience in building distribution networks and managing key accounts. His focus on quality assurance and regulatory compliance ensures Quinser maintains the highest industry standards.",
-      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+      bio: "With a career spanning more than 22 years in pharmaceuticals, Ajay has built a strong foundation in sales, marketing, and business operations. Beginning as a medical representative, his exceptional performance led him to management positions where he oversaw multiple districts. He has extensive experience in building distribution networks and managing key accounts. His focus on quality assurance and regulatory compliance ensures Quinser maintains the highest industry standards."
     },
     {
       name: "Shakuntala Devi",
       designation: "Director",
       location: "India",
-      bio: "Shakuntala brings over 20 years of pharmaceutical industry expertise, with a strong background in sales and business development. Her career progression from medical representative to senior management roles has given her comprehensive insights into market dynamics and customer relationships. She has managed extensive sales territories and distribution networks, building strong partnerships across the pharmaceutical value chain. Her commitment to excellence and patient-centric approach drives Quinser's mission forward.",
-      photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
+      bio: "Shakuntala brings over 20 years of pharmaceutical industry expertise, with a strong background in sales and business development. Her career progression from medical representative to senior management roles has given her comprehensive insights into market dynamics and customer relationships. She has managed extensive sales territories and distribution networks, building strong partnerships across the pharmaceutical value chain. Her commitment to excellence and patient-centric approach drives Quinser's mission forward."
     },
     {
       name: "Chidanand Umesh Rajmane",
       designation: "Director",
       location: "India",
-      bio: "Chidanand has dedicated over 23 years to the pharmaceutical industry, starting as a medical representative and advancing through various leadership roles. His experience includes managing large sales teams, developing market strategies, and establishing robust distribution channels across multiple regions. He has a proven track record in business growth and operational excellence. His expertise in quality management and regulatory affairs ensures Quinser's products meet international standards.",
-      photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
+      bio: "Chidanand has dedicated over 23 years to the pharmaceutical industry, starting as a medical representative and advancing through various leadership roles. His experience includes managing large sales teams, developing market strategies, and establishing robust distribution channels across multiple regions. He has a proven track record in business growth and operational excellence. His expertise in quality management and regulatory affairs ensures Quinser's products meet international standards."
     }
   ]
 
@@ -72,7 +66,7 @@ const Home = () => {
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent pb-2 leading-tight">
-              Quality, Integrity and Service
+              Quality Integrity Service
             </h1>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto mb-8">
               35 years of professional expertise in the pharmaceutical sector led to the formation of <span className="font-semibold text-primary">Quinser Pharmaceuticals Private Limited</span>, a venture predicated on its foundational principles of <span className="font-semibold text-secondary">Quality</span>, <span className="font-semibold text-primary">Integrity</span>, and <span className="font-semibold text-secondary">Service</span>.
@@ -123,13 +117,6 @@ const Home = () => {
                 key={index}
                 className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-border hover:border-primary/20"
               >
-                <div className="mb-4">
-                  <img
-                    src={founder.photo}
-                    alt={founder.name}
-                    className="w-32 h-32 rounded-full mx-auto object-cover image-desaturate"
-                  />
-                </div>
                 <h3 className="text-xl font-semibold text-primary text-center mb-2">{founder.name}</h3>
                 <p className="text-secondary text-center font-medium mb-2">{founder.designation}</p>
                 <p className="text-text-secondary text-sm text-center mb-4">{founder.location}</p>
@@ -188,7 +175,7 @@ const Home = () => {
               Activity
             </p>
             <p className="text-lg mt-1 text-gray-900">
-              Wholesale of pharmaceutical and medical goods
+              Marketing, Wholesale of pharmaceutical and medical goods
             </p>
           </div>
 
