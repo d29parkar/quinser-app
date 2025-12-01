@@ -66,7 +66,7 @@ const Home = () => {
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent pb-2 leading-tight">
-              Quality-Integrity-service
+              Quality-Integrity-Service
             </h1>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto mb-8">
               35 years of professional expertise in the pharmaceutical sector led to the formation of <span className="font-semibold text-primary">Quinser Pharmaceuticals Private Limited</span>, a venture predicated on its foundational principles of <span className="font-semibold text-secondary">Quality</span>, <span className="font-semibold text-primary">Integrity</span>, and <span className="font-semibold text-secondary">Service</span>.
