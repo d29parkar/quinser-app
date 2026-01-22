@@ -36,7 +36,7 @@ const Contact = () => {
                       Quinser Pharmaceuticals Private Limited<br />
                       Plot No 72, Flat No 306 A<br />
                       Vishwa Highlands CHSL Ltd<br />
-                      Raigad, Maharashtra, India - 410209
+                      Navi Mumbai, Raigad, Maharashtra, India - 410209
                     </p>
                   </div>
                 </div>
@@ -49,9 +49,17 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-text mb-1">Phone</h3>
-                    <a href="tel:+91XXXXXXXXXX" className="text-text-secondary hover:text-primary transition-colors">
-                      +91 XXXXXXXXXX
-                    </a>
+                    <div className="space-y-1">
+                      <a href="tel:+919920976669" className="text-text-secondary hover:text-primary transition-colors block">
+                        +91 9920976669
+                      </a>
+                      <a href="tel:+917972551078" className="text-text-secondary hover:text-primary transition-colors block">
+                        +91 7972551078
+                      </a>
+                      <a href="tel:+919922107224" className="text-text-secondary hover:text-primary transition-colors block">
+                        +91 99221 07224
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -63,8 +71,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-text mb-1">Email</h3>
-                    <a href="mailto:info@quinser.com" className="text-text-secondary hover:text-primary transition-colors">
-                      info@quinser.com
+                    <a href="mailto:quinserpharma1@gmail.com" className="text-text-secondary hover:text-primary transition-colors">
+                      quinserpharma1@gmail.com
                     </a>
                   </div>
                 </div>

@@ -10,7 +10,7 @@ const Team = () => {
       name: "Kiran Sudhakar Pimparkar",
       role: "Director",
       bio: "Kiran has been in the pharmaceutical industry for 25 years. He started his career as a medical representative, climbing to the position of area development manager. He then started his own wholesale business, active in Maharashtra state of India. He brings extensive experience in marketing and distribution with a deep understanding of regional market dynamics and customer needs.",
-      location: "Jalgaon, India"
+      location: "India"
     },
     {
       name: "Vishwanath Ananda Patil",
@@ -76,7 +76,7 @@ const Team = () => {
               </div>
               <h3 className="text-xl font-semibold text-text mb-3">Quality</h3>
               <p className="text-text-secondary">
-                Uncompromising commitment to the highest standards in every aspect of our operations.
+                Uncompromising commitment to the highest standards in every product we deliver.
               </p>
             </div>
             <div className="text-center">
@@ -94,7 +94,7 @@ const Team = () => {
               </div>
               <h3 className="text-xl font-semibold text-text mb-3">Service</h3>
               <p className="text-text-secondary">
-                Dedicated to serving our customers, partners, and communities with excellence.
+                Dedicated to serving the medical profession, trade partners and patients with excellence.
               </p>
             </div>
           </div>

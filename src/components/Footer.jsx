@@ -58,15 +58,25 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-semibold text-text mb-4">Contact</h4>
             <ul className="space-y-2 text-text-secondary text-sm">
-              <li>Raigad, Maharashtra, India</li>
+              <li>Navi Mumbai, Raigad, Maharashtra, India</li>
               <li>
-                <a href="tel:+91XXXXXXXXXX" className="hover:text-primary transition-colors">
-                  +91 XXXXXXXXXX
+                <a href="tel:+919920976669" className="hover:text-primary transition-colors">
+                  +91 9920976669
                 </a>
               </li>
               <li>
-                <a href="mailto:info@quinser.com" className="hover:text-primary transition-colors">
-                  info@quinser.com
+                <a href="tel:+917972551078" className="hover:text-primary transition-colors">
+                  +91 7972551078
+                </a>
+              </li>
+              <li>
+                <a href="tel:+919922107224" className="hover:text-primary transition-colors">
+                  +91 99221 07224
+                </a>
+              </li>
+              <li>
+                <a href="mailto:quinserpharma1@gmail.com" className="hover:text-primary transition-colors">
+                  quinserpharma1@gmail.com
                 </a>
               </li>
             </ul>

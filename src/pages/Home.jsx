@@ -11,7 +11,7 @@ const Home = () => {
     {
       name: "Kiran Sudhakar Pimparkar",
       designation: "Director",
-      location: "Jalgaon, India",
+      location: "India",
       bio: "Kiran has been in the pharmaceutical industry for 25 years. He started his career as a medical representative, climbing to the position of area development manager. He then started his own wholesale business, active in Maharashtra state of India. He brings extensive experience in marketing and distribution with a deep understanding of regional market dynamics and customer needs."
     },
     {
@@ -187,8 +187,8 @@ const Home = () => {
             Registered Office
           </p>
           <p className="text-lg mt-1 text-gray-900 leading-relaxed">
-            Plot No 72, Flat No 306 A, Vishwa Highlands CHSL Ltd, 
-            Raigad, Maharashtra, India — 410209
+            Plot No 72, Flat No 306 A, Vishwa Highlands CHSL Ltd,
+            Navi Mumbai, Raigad, Maharashtra, India — 410209
           </p>
         </div>
 
