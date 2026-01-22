@@ -85,6 +85,11 @@ const Footer = () => {
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-text-secondary">
           <p>&copy; {new Date().getFullYear()} Quinser Pharmaceuticals Private Limited. All rights reserved.</p>
+          <div className="mt-2">
+            <Link to="/admin/login" className="text-xs text-text-secondary/70 hover:text-primary transition-colors">
+              Admin Login
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
@@ -92,4 +97,5 @@ const Footer = () => {
 }
 
 export default Footer
+
 
