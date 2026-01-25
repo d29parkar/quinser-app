@@ -7,16 +7,18 @@ const Products = () => {
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
   const [editingProduct, setEditingProduct] = useState(null)
-  const [formData, setFormData] = useState({ name: '', category: '', description: '' })
+  const [formData, setFormData] = useState({ name: '', category: '', dosage_form: '', description: '' })
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
 
   const { token, logout, API_URL } = useAuth()
 
   const categories = [
-    'Antibiotics', 'Analgesics', 'Cardiology', 'Endocrinology', 'Pulmonology',
-    'Gastroenterology', 'Nutritional Supplements', 'Dermatology', 'Allergy',
-    'Orthopedics', 'Ophthalmology', 'Antivirals', 'Fertility Products'
+    'Gynaec / Infertility',
+    'Surg / Uro',
+    'Phy / Nephro / Cardio',
+    'Orthopedics',
+    'Gastroenterology'
   ]
 
   useEffect(() => {
@@ -91,7 +93,7 @@ const Products = () => {
 
   const openAddModal = () => {
     setEditingProduct(null)
-    setFormData({ name: '', category: '', description: '' })
+    setFormData({ name: '', category: '', dosage_form: '', description: '' })
     setError('')
     setShowModal(true)
   }
@@ -101,6 +103,7 @@ const Products = () => {
     setFormData({
       name: product.name,
       category: product.category,
+      dosage_form: product.dosage_form || '',
       description: product.description || ''
     })
     setError('')
@@ -110,7 +113,7 @@ const Products = () => {
   const closeModal = () => {
     setShowModal(false)
     setEditingProduct(null)
-    setFormData({ name: '', category: '', description: '' })
+    setFormData({ name: '', category: '', dosage_form: '', description: '' })
     setError('')
   }
 
@@ -174,6 +177,7 @@ const Products = () => {
                 <tr>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-text">Name</th>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-text">Category</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-text">Dosage Form</th>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-text">Description</th>
                   <th className="px-6 py-4 text-right text-sm font-semibold text-text">Actions</th>
                 </tr>
@@ -186,6 +190,9 @@ const Products = () => {
                       <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">
                         {product.category}
                       </span>
+                    </td>
+                    <td className="px-6 py-4 text-text-secondary text-sm">
+                      {product.dosage_form}
                     </td>
                     <td className="px-6 py-4 text-text-secondary text-sm max-w-md truncate">
                       {product.description}
@@ -254,6 +261,17 @@ const Products = () => {
                     <option key={cat} value={cat}>{cat}</option>
                   ))}
                 </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-text mb-2">Dosage Form</label>
+                <input
+                  type="text"
+                  value={formData.dosage_form}
+                  onChange={(e) => setFormData({ ...formData, dosage_form: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  placeholder="e.g., Tablet, Capsule, Syrup, Injection"
+                />
               </div>
 
               <div>

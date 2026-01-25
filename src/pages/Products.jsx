@@ -1,14 +1,35 @@
-import { useState } from 'react'
-import productsData from '../data/products.json'
+import { useState, useEffect } from 'react'
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
-  
-  const categories = ['All', ...new Set(productsData.map(product => product.category))]
-  
-  const filteredProducts = selectedCategory === 'All' 
-    ? productsData 
-    : productsData.filter(product => product.category === selectedCategory)
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  const API_URL = import.meta.env.VITE_API_URL || ''
+
+  useEffect(() => {
+    fetchProducts()
+  }, [])
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch(`${API_URL}/api/products`)
+      if (response.ok) {
+        const data = await response.json()
+        setProducts(data)
+      }
+    } catch (error) {
+      console.error('Failed to fetch products:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const categories = ['All', ...new Set(products.map(product => product.category))]
+
+  const filteredProducts = selectedCategory === 'All'
+    ? products
+    : products.filter(product => product.category === selectedCategory)
 
   return (
     <div className="min-h-screen py-12 bg-gradient-to-b from-background via-card-bg to-background">
@@ -39,27 +60,40 @@ const Products = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProducts.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-border hover:border-primary/20"
-            >
-              <div className="mb-4">
-                <span className="inline-block px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs font-semibold rounded-full border border-primary/20">
-                  {product.category}
-                </span>
-              </div>
-              <h3 className="text-xl font-semibold text-text mb-3">{product.name}</h3>
-              <p className="text-text-secondary leading-relaxed">{product.description}</p>
-            </div>
-          ))}
-        </div>
-
-        {filteredProducts.length === 0 && (
+        {loading ? (
           <div className="text-center py-12">
-            <p className="text-text-secondary text-lg">No products found in this category.</p>
+            <p className="text-text-secondary text-lg">Loading products...</p>
           </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredProducts.map((product) => (
+                <div
+                  key={product.id}
+                  className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-border hover:border-primary/20"
+                >
+                  <div className="mb-4 flex items-center gap-2 flex-wrap">
+                    <span className="inline-block px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs font-semibold rounded-full border border-primary/20">
+                      {product.category}
+                    </span>
+                    {product.dosage_form && (
+                      <span className="inline-block px-3 py-1 bg-gradient-to-r from-accent/10 to-primary/10 text-accent text-xs font-semibold rounded-full border border-accent/20">
+                        {product.dosage_form}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-xl font-semibold text-text mb-3">{product.name}</h3>
+                  <p className="text-text-secondary leading-relaxed">{product.description}</p>
+                </div>
+              ))}
+            </div>
+
+            {filteredProducts.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-text-secondary text-lg">No products found in this category.</p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
