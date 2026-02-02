@@ -4,7 +4,8 @@
       "Bash(npm install:*)",
       "Bash(./venv/Scripts/pip.exe install:*)",
       "Bash(docker compose:*)",
-      "Bash(./venv/Scripts/alembic.exe upgrade:*)"
+      "Bash(./venv/Scripts/alembic.exe upgrade:*)",
+      "Bash(du:*)"
     ]
   }
 }
