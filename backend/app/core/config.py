@@ -1,10 +1,19 @@
 from pydantic_settings import BaseSettings
+from pydantic import field_validator
 from typing import Optional
 
 
 class Settings(BaseSettings):
     # Database (using psycopg v3 sync driver)
     DATABASE_URL: str = "postgresql+psycopg://postgres:postgres@localhost:5432/quinser"
+
+    @field_validator("DATABASE_URL", mode="before")
+    @classmethod
+    def fix_database_url(cls, v: str) -> str:
+        # Render provides postgresql:// but psycopg3 needs postgresql+psycopg://
+        if v.startswith("postgresql://"):
+            return v.replace("postgresql://", "postgresql+psycopg://", 1)
+        return v
 
     # JWT
     JWT_SECRET: str = "your-secret-key-change-in-production"
