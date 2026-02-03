@@ -23,11 +23,17 @@ class Settings(BaseSettings):
     # Environment
     ENV: str = "development"
 
-    # CORS
+    # CORS - Allow frontend origins
     CORS_ORIGINS: list[str] = [
         "http://localhost:5173",
+        "http://localhost:5174",
         "http://localhost:3000",
         "http://127.0.0.1:5173",
+        "http://127.0.0.1:5174",
+        "https://quinser-app.vercel.app",
+        "https://quinser.vercel.app",
+        "https://www.quinser.com",
+        "https://quinser.com",
     ]
 
     class Config:
