@@ -5,7 +5,7 @@ const Products = () => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
 
-  const API_URL = import.meta.env.VITE_API_URL || ''
+  const API_URL = import.meta.env.VITE_API_URL || 'https://quinser-app.onrender.com'
 
   useEffect(() => {
     fetchProducts()
