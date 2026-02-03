@@ -69,7 +69,7 @@ const Home = () => {
               Quality-Integrity-Service
             </h1>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto mb-8">
-              35 years of professional expertise in the pharmaceutical sector led to the formation of <span className="font-semibold text-primary">Quinser Pharmaceuticals Private Limited</span>, a Mumbai-based pharma venture rooted in the founding principles of <span className="font-semibold text-secondary">QUALITY</span>-<span className="font-semibold text-primary">INTEGRITY</span>-<span className="font-semibold text-secondary">SERVICE</span> — where passion meets purpose.
+              35 years of professional expertise in the pharmaceutical sector led to the formation of <span className="font-semibold text-primary">QUINSER Pharmaceuticals Private Limited</span>, a Mumbai-based pharma venture rooted in the founding principles of "<span className="font-semibold text-secondary">QUALITY</span>-<span className="font-semibold text-primary">INTEGRITY</span>-<span className="font-semibold text-secondary">SERVICE</span>", where Passion Meets Purpose.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
