@@ -3,24 +3,6 @@ import { Link } from 'react-router-dom'
 const Home = () => {
   const founders = [
     {
-      name: "Ramkumar Kooliyadath",
-      designation: "Director",
-      location: "India",
-      bio: "With over three decades of experience in the pharmaceutical industry, Ramkumar brings deep expertise in business development and operations. Starting his career as a medical representative, he progressed through various roles, gaining comprehensive knowledge of the pharmaceutical market. He has extensive experience in sales management and distribution networks across multiple regions. His strategic vision and commitment to quality have been instrumental in establishing Quinser's foundation."
-    },
-    {
-      name: "Kiran Sudhakar Pimparkar",
-      designation: "Director",
-      location: "India",
-      bio: "Kiran has been in the pharmaceutical industry for 25 years. He started his career as a medical representative, climbing to the position of area development manager. He then started his own wholesale business, active in Maharashtra state of India. He brings extensive experience in marketing and distribution with a deep understanding of regional market dynamics and customer needs."
-    },
-    {
-      name: "Vishwanath Ananda Patil",
-      designation: "Director",
-      location: "India",
-      bio: "Vishwanath brings over 20 years of pharmaceutical industry experience, having worked across various segments from field sales to distribution management. His journey began as a medical representative, where he developed strong relationships with healthcare professionals. He progressed to regional management roles, overseeing sales operations across multiple territories. His expertise in supply chain management and market penetration strategies has been crucial in expanding Quinser's reach."
-    },
-    {
       name: "Ajay Katare",
       designation: "Director",
       location: "India",
