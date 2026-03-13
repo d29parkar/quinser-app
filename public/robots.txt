@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://quinser.vercel.app/sitemap.xml
+Sitemap: https://www.quinserpharma.com/sitemap.xml
