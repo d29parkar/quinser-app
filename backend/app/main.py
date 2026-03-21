@@ -1,3 +1,5 @@
+import logging
+import traceback
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
@@ -6,6 +8,9 @@ from sqlalchemy.orm import Session
 
 from app.core.config import settings
 from app.api.router import api_router
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 @asynccontextmanager
@@ -35,13 +40,15 @@ app.add_middleware(
 )
 
 
-# Custom exception handler to match Express.js error format
+# Custom exception handler
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
     """Global exception handler."""
+    logger.error("Unhandled exception on %s %s", request.method, request.url)
+    logger.error(traceback.format_exc())
     return JSONResponse(
         status_code=500,
-        content={"error": "Internal server error"}
+        content={"error": "Internal server error", "detail": str(exc)}
     )
 
 
