@@ -106,10 +106,8 @@ npm run dev
 3. Scroll down to "Connection string"
 4. Select "URI" and copy the connection string
 5. It looks like: `postgresql://postgres:[YOUR-PASSWORD]@db.xxx.supabase.co:5432/postgres`
-6. **For FastAPI**, modify the URL to use asyncpg driver:
-   - Change `postgresql://` to `postgresql+asyncpg://`
-   - Example: `postgresql+asyncpg://postgres:[YOUR-PASSWORD]@db.xxx.supabase.co:5432/postgres`
-7. **Save this connection string** - you'll need it for backend deployment
+6. **Save this connection string as-is** -- the backend's config validator automatically converts it to the correct `postgresql+psycopg://` format that psycopg3 needs.
+7. You will paste this into Render as `DATABASE_URL` in the next step.
 
 ---
 
@@ -148,13 +146,13 @@ Scroll down to "Environment Variables" and click "Add Environment Variable"
 Add these variables:
 
 ```
-DATABASE_URL = postgresql+asyncpg://postgres:[YOUR-PASSWORD]@db.xxx.supabase.co:5432/postgres
+DATABASE_URL = postgresql://postgres:[YOUR-PASSWORD]@db.xxx.supabase.co:5432/postgres
 JWT_SECRET = your-super-secret-key-change-this-to-something-random
 JWT_EXPIRE_HOURS = 24
 ENV = production
 ```
 
-Replace the DATABASE_URL with your actual Supabase connection string from Part 1, Step 3.
+Replace `DATABASE_URL` with your actual Supabase connection string from Part 1, Step 6. Paste the URL exactly as Supabase gives it -- the backend automatically converts `postgresql://` to the correct `postgresql+psycopg://` driver prefix.
 
 ### Step 5: Deploy
 
@@ -208,9 +206,8 @@ Replace the DATABASE_URL with your actual Supabase connection string from Part 1
 ### Step 4: Get Your Frontend URL
 
 1. Once deployed, Vercel will show your site
-2. URL looks like: `https://quinser-app.vercel.app`
-3. Click "Visit" to view your live site
-4. You can add a custom domain later if you have one
+2. By default the URL looks like `https://quinser-app.vercel.app`; a custom domain (`quinserpharma.com`) is already configured in the Vercel dashboard
+3. Click "Visit" to view your live site at `https://www.quinserpharma.com`
 
 ---
 
@@ -231,7 +228,7 @@ Replace the DATABASE_URL with your actual Supabase connection string from Part 1
 
 ### Test Admin Panel
 
-1. Go to: `https://your-vercel-url.vercel.app/admin`
+1. Go to: `https://www.quinserpharma.com/admin`
 2. Login with:
    - **Username:** `admin`
    - **Password:** `quinser2025`
@@ -284,7 +281,7 @@ Replace the DATABASE_URL with your actual Supabase connection string from Part 1
 
 Share this URL with all directors:
 ```
-https://your-vercel-url.vercel.app/admin
+https://www.quinserpharma.com/admin
 ```
 
 Login credentials:
@@ -342,7 +339,7 @@ When you make code changes:
 
 ### "Database connection error"
 - Verify `DATABASE_URL` is correct in Render
-- Make sure it uses `postgresql+asyncpg://` prefix
+- Paste the URL exactly as Supabase gives it (the backend converts it to `postgresql+psycopg://` automatically)
 - Check your Supabase database is running
 - Check Render logs for specific errors
 

@@ -6,7 +6,7 @@ This guide is for company directors and administrators who need to manage the Qu
 
 ## What Is This Website?
 
-The Quinser Pharmaceuticals website (https://quinser.vercel.app) is the company's online presence. It shows visitors information about the company, its team, manufacturing capabilities, and product catalogue. Visitors can also send enquiries through a contact form.
+The Quinser Pharmaceuticals website (https://www.quinserpharma.com) is the company's online presence. It shows visitors information about the company, its team, manufacturing capabilities, and product catalogue. Visitors can also send enquiries through a contact form.
 
 As an admin, you can:
 
@@ -21,7 +21,7 @@ All changes you make are saved instantly and are visible to website visitors imm
 ## How to Log In
 
 1. Open your web browser (Chrome, Firefox, Safari, or Edge)
-2. Go to: **https://quinser.vercel.app/admin/login**
+2. Go to: **https://www.quinserpharma.com/admin/login**
    - You can also reach this by scrolling to the bottom of any page on the website and clicking the small "Admin Login" link
 3. Enter your **Username** and **Password**
 4. Click **Sign In**
@@ -183,7 +183,7 @@ Changes should appear immediately. Try these steps:
 
 ### "I cannot log in"
 
-1. Make sure you are using the correct address: **https://quinser.vercel.app/admin/login**
+1. Make sure you are using the correct address: **https://www.quinserpharma.com/admin/login**
 2. Check that the username and password are typed correctly (they are case-sensitive)
 3. If the login page itself is slow to load, the server may be waking up -- wait 30 seconds and try again
 4. If you see an error message after clicking Sign In, the password may be wrong. Try typing it again carefully.
@@ -207,9 +207,9 @@ This usually means the backend server is still waking up. Wait about 30 seconds 
 
 | Task | Where to go |
 |---|---|
-| Log in to admin | https://quinser.vercel.app/admin/login |
-| View the dashboard | https://quinser.vercel.app/admin |
-| Manage products | https://quinser.vercel.app/admin/products |
-| View messages | https://quinser.vercel.app/admin/submissions |
-| View the public website | https://quinser.vercel.app |
+| Log in to admin | https://www.quinserpharma.com/admin/login |
+| View the dashboard | https://www.quinserpharma.com/admin |
+| Manage products | https://www.quinserpharma.com/admin/products |
+| View messages | https://www.quinserpharma.com/admin/submissions |
+| View the public website | https://www.quinserpharma.com |
 | Log out | Click the red "Logout" button in the top right corner |

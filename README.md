@@ -51,7 +51,7 @@ The frontend has **no state management library** (no Redux, no Zustand). State i
 | Technology | Details |
 |---|---|
 | **PostgreSQL 16** | Relational database. In production, hosted on Render (or Supabase). Locally, provided via Docker Compose ([`docker-compose.yml`](docker-compose.yml)). |
-| **psycopg 3** | Python PostgreSQL driver (synchronous). The backend's `DATABASE_URL` validator in [`backend/app/core/config.py`](backend/app/core/config.py) automatically converts `postgresql://` (what Render provides) to `postgresql+psycopg://` (what SQLAlchemy + psycopg3 needs). |
+| **psycopg 3** | Python PostgreSQL driver (synchronous). The backend's `DATABASE_URL` validator in [`backend/app/core/config.py`](backend/app/core/config.py) automatically converts `postgres://` or `postgresql://` (what Render/Supabase provide) to `postgresql+psycopg://` (what SQLAlchemy + psycopg3 needs). |
 
 > **Note for learners:** The existing `backend/README.md` and `DEPLOYMENT_GUIDE.md` mention `asyncpg` -- that is outdated. The codebase actually uses synchronous psycopg3 (`psycopg[binary]`). You can verify this in [`backend/requirements.txt`](backend/requirements.txt) and [`backend/app/db/session.py`](backend/app/db/session.py) (which uses `create_engine`, not `create_async_engine`).
 
@@ -63,15 +63,15 @@ The frontend has **no state management library** (no Redux, no Zustand). State i
 
 | Component | Host | URL |
 |---|---|---|
-| Frontend (React/Vite) | **Vercel** (free tier) | `https://quinser.vercel.app` |
-| Backend (FastAPI) | **Render** (free tier) | `https://quinser-app.onrender.com` |
+| Frontend (React/Vite) | **Vercel** (free tier) | `https://www.quinserpharma.com` |
+| Backend (FastAPI) | **Render** (free tier) | `https://quinser-backend.onrender.com` |
 | Database (PostgreSQL) | **Render Postgres** or **Supabase** (free tier) | Managed; backend connects via `DATABASE_URL` |
 
 Evidence:
 - Vercel config: [`vercel.json`](vercel.json) (SPA rewrite rules)
 - Render config: [`render.yaml`](render.yaml) (service definition with build/start commands)
-- CORS origins in [`backend/app/core/config.py`](backend/app/core/config.py) include both `quinser.vercel.app` and `quinser-app.vercel.app`
-- Frontend env files ([`.env.production`](.env.production), [`.env.example`](.env.example)) set `VITE_API_URL=https://quinser-app.onrender.com`
+- CORS origins in [`backend/app/core/config.py`](backend/app/core/config.py) include `quinserpharma.com` and `www.quinserpharma.com`
+- Frontend env files ([`.env.production`](.env.production), [`.env.example`](.env.example)) set `VITE_API_URL=https://quinser-backend.onrender.com`
 
 ### Architecture diagram
 
@@ -88,7 +88,7 @@ Evidence:
       |  fetch() calls over HTTPS to:
       v
   Render Web Service
-  https://quinser-app.onrender.com
+  https://quinser-backend.onrender.com
   Runs: uvicorn app.main:app
   (FastAPI application)
       |
@@ -112,7 +112,7 @@ This section explains what actually happens at the network level when a user int
 
 ### What happens when a user opens the website
 
-1. **DNS resolution:** The browser resolves `quinser.vercel.app` to Vercel's edge servers via DNS.
+1. **DNS resolution:** The browser resolves `quinserpharma.com` to Vercel's edge servers via DNS.
 2. **HTML download:** Vercel serves `index.html` (the single-page app shell). This file contains `<script type="module" src="/src/main.jsx">` which triggers the browser to download the bundled JavaScript.
 3. **React boots:** `main.jsx` renders `<App />`, which sets up React Router. The router looks at the URL path and renders the matching page component.
 4. **API calls:** When the Products page mounts, its `useEffect` calls `fetch(\`${API_URL}/api/products\`)`. The `API_URL` comes from the Vite environment variable `VITE_API_URL` (baked in at build time).
@@ -124,11 +124,11 @@ Vite replaces `import.meta.env.VITE_API_URL` with the literal string value at **
 - In development: the value comes from [`.env.local`](.env.local) or [`.env`](.env.example)
 - In production: the value is set in Vercel's dashboard as an environment variable before building
 
-If `VITE_API_URL` is not set, the code falls back to `'https://quinser-app.onrender.com'` (hardcoded in [`src/context/AuthContext.jsx`](src/context/AuthContext.jsx) and [`src/pages/Products.jsx`](src/pages/Products.jsx)).
+If `VITE_API_URL` is not set, the code falls back to `'https://quinser-backend.onrender.com'` (hardcoded in [`src/context/AuthContext.jsx`](src/context/AuthContext.jsx) and [`src/pages/Products.jsx`](src/pages/Products.jsx)).
 
 ### Cross-Origin Resource Sharing (CORS)
 
-The frontend (`quinser.vercel.app`) and backend (`quinser-app.onrender.com`) are on **different origins** (different hostnames). Browsers block cross-origin requests by default as a security measure. To allow the frontend to call the backend:
+The frontend (`quinserpharma.com`) and backend (`quinser-backend.onrender.com`) are on **different origins** (different hostnames). Browsers block cross-origin requests by default as a security measure. To allow the frontend to call the backend:
 
 1. FastAPI applies `CORSMiddleware` in [`backend/app/main.py`](backend/app/main.py):
    ```python
@@ -146,15 +146,15 @@ The frontend (`quinser.vercel.app`) and backend (`quinser-app.onrender.com`) are
    http://localhost:5173       (Vite dev server)
    http://localhost:5174       (Vite dev server alternate port)
    http://localhost:3000       (alternative dev server)
-   https://quinser-app.vercel.app
-   https://quinser.vercel.app
-   https://www.quinser.com
-   https://quinser.com
+   https://www.quinserpharma.com
+   https://quinserpharma.com
    ```
 
-3. When the browser makes a cross-origin request, it first sends a **preflight** `OPTIONS` request. FastAPI's CORS middleware responds with `Access-Control-Allow-Origin: https://quinser.vercel.app`, telling the browser "this origin is allowed". The browser then proceeds with the actual `GET`/`POST` request.
+3. When the browser makes a cross-origin request, it first sends a **preflight** `OPTIONS` request. FastAPI's CORS middleware responds with `Access-Control-Allow-Origin: https://www.quinserpharma.com`, telling the browser "this origin is allowed". The browser then proceeds with the actual `GET`/`POST` request.
 
 **Why this matters:** If you deploy the frontend to a new domain and forget to add it to `CORS_ORIGINS`, all API calls will fail with a CORS error in the browser console. The backend itself works fine -- it's the *browser* that blocks the response.
+
+> **Custom domain note:** The production frontend is served at `https://www.quinserpharma.com` (custom domain configured in Vercel). Both `quinserpharma.com` and `www.quinserpharma.com` are listed in `CORS_ORIGINS`.
 
 ### Network protocols used
 
@@ -218,8 +218,8 @@ All routes are prefixed with `/api` (defined in [`backend/app/api/router.py`](ba
 
 FastAPI automatically generates interactive API documentation:
 
-- **Swagger UI:** `https://quinser-app.onrender.com/docs`
-- **ReDoc:** `https://quinser-app.onrender.com/redoc`
+- **Swagger UI:** `https://quinser-backend.onrender.com/docs`
+- **ReDoc:** `https://quinser-backend.onrender.com/redoc`
 
 ---
 
@@ -266,7 +266,7 @@ This system has a **single role**: admin. There is no multi-role system (no "edi
 
 | Variable | Set where | What it does |
 |---|---|---|
-| `VITE_API_URL` | Vercel dashboard (production), `.env.local` (development) | The base URL for all API calls. Baked into the JavaScript bundle at build time by Vite. Example: `https://quinser-app.onrender.com` |
+| `VITE_API_URL` | Vercel dashboard (production), `.env.local` (development) | The base URL for all API calls. Baked into the JavaScript bundle at build time by Vite. Example: `https://quinser-backend.onrender.com` |
 
 **How Vite env vars work:** Only variables prefixed with `VITE_` are exposed to the frontend code. They are replaced at build time -- changing them requires a rebuild/redeploy. Access them via `import.meta.env.VITE_API_URL`.
 
@@ -296,7 +296,7 @@ See [`backend/.env.example`](backend/.env.example) for a ready-to-copy template.
 #### "Backend can't connect to database"
 
 1. **Wrong `DATABASE_URL`**: Verify the connection string in Render's environment variables. It must be a valid PostgreSQL URL.
-2. **psycopg3 driver prefix**: Render provides `postgresql://...` but psycopg3 needs `postgresql+psycopg://...`. The app's config validator handles this automatically, but if you set `DATABASE_URL` in a `.env` file manually, use the `postgresql+psycopg://` prefix.
+2. **psycopg3 driver prefix**: Render provides `postgres://...` (and Supabase provides `postgresql://...`) but psycopg3 needs `postgresql+psycopg://...`. The app's config validator handles both conversions automatically, but if you set `DATABASE_URL` in a `.env` file manually, use the `postgresql+psycopg://` prefix.
 3. **Migrations not run**: If tables don't exist, the build command must include `alembic upgrade head`. Check [`render.yaml`](render.yaml) to confirm.
 4. **Database not provisioned**: Ensure the PostgreSQL instance is running on Render/Supabase.
 
@@ -436,7 +436,7 @@ The project has solid SEO foundations, all implemented in [`index.html`](index.h
 **Meta tags (lines 9-14):**
 - Title: "Quinser Pharmaceuticals Pvt. Ltd. | Quality, Integrity and Service"
 - Description, keywords, author, robots (`index, follow`)
-- Canonical URL: `https://quinser.vercel.app/`
+- Canonical URL: `https://www.quinserpharma.com/`
 
 **Open Graph and Twitter Cards (lines 18-30):**
 - `og:type`, `og:url`, `og:title`, `og:description`, `og:image`, `og:site_name`

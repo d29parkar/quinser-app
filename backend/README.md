@@ -5,12 +5,12 @@ FastAPI backend for Quinser Pharmaceuticals website.
 ## Tech Stack
 
 - **FastAPI** - Modern Python web framework
-- **SQLAlchemy 2.0** - Async ORM
-- **asyncpg** - Async PostgreSQL driver
+- **SQLAlchemy 2.0** - Synchronous ORM
+- **psycopg[binary]** - Synchronous PostgreSQL driver (psycopg v3)
 - **Alembic** - Database migrations
 - **Pydantic** - Data validation
 - **python-jose** - JWT authentication
-- **passlib** - Password hashing (bcrypt)
+- **bcrypt** - Password hashing
 
 ## Project Structure
 
@@ -127,7 +127,7 @@ Once the server is running:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `DATABASE_URL` | PostgreSQL connection string | `postgresql+asyncpg://postgres:postgres@localhost:5432/quinser` |
+| `DATABASE_URL` | PostgreSQL connection string | `postgresql+psycopg://postgres:postgres@localhost:5432/quinser` |
 | `JWT_SECRET` | Secret key for JWT tokens | `your-secret-key-change-in-production` |
 | `JWT_ALGORITHM` | JWT signing algorithm | `HS256` |
 | `JWT_EXPIRE_HOURS` | Token expiration time | `24` |
