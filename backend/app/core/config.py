@@ -10,9 +10,11 @@ class Settings(BaseSettings):
     @field_validator("DATABASE_URL", mode="before")
     @classmethod
     def fix_database_url(cls, v: str) -> str:
-        # Render provides postgresql:// but psycopg3 needs postgresql+psycopg://
+        # Render provides postgres:// or postgresql:// but psycopg3 needs postgresql+psycopg://
         if v.startswith("postgresql://"):
             return v.replace("postgresql://", "postgresql+psycopg://", 1)
+        if v.startswith("postgres://"):
+            return v.replace("postgres://", "postgresql+psycopg://", 1)
         return v
 
     # JWT
