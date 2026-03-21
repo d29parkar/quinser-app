@@ -1,10 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <!-- Blue medical cross: vertical arm -->
-  <rect x="15" y="2" width="18" height="44" rx="4" fill="#0047AB"/>
+  <rect x="29" y="4" width="42" height="92" rx="8" fill="#0047AB"/>
   <!-- Blue medical cross: horizontal arm -->
-  <rect x="2" y="15" width="44" height="18" rx="4" fill="#0047AB"/>
-  <!-- White circular badge (mirrors the circular Q emblem in the brand logo) -->
-  <circle cx="24" cy="24" r="11" fill="white"/>
-  <!-- Brand-red Q lettermark -->
-  <text x="24.5" y="31" font-family="'Arial Black', 'Arial Bold', Arial, sans-serif" font-size="15" font-weight="900" fill="#E4002B" text-anchor="middle">Q</text>
+  <rect x="4" y="29" width="92" height="42" rx="8" fill="#0047AB"/>
+  <!-- Red swoosh 1 (lower arc) -->
+  <path d="M 30 71 C 44 62, 58 64, 70 71" stroke="#E4002B" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+  <!-- Red swoosh 2 (middle arc) -->
+  <path d="M 27 57 C 43 46, 60 47, 73 56" stroke="#E4002B" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+  <!-- Red swoosh 3 (upper arc) -->
+  <path d="M 30 43 C 45 32, 61 34, 72 42" stroke="#E4002B" stroke-width="5.5" fill="none" stroke-linecap="round"/>
 </svg>
