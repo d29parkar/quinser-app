@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://quinser-app.onrender.com'
+const API_URL = import.meta.env.VITE_API_URL || 'https://quinser-backend.onrender.com'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
