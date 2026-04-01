@@ -1,7 +1,7 @@
 import re
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from typing import List
+from typing import List, Optional
 
 from app.db.session import get_db
 from app.models.product import Product
@@ -22,6 +22,20 @@ def _slugify(name: str) -> str:
     slug = slug.strip('-')                     # trim leading/trailing dashes
     slug = re.sub(r'-{2,}', '-', slug)        # collapse multiple dashes
     return slug
+
+
+def _unique_slug(base_slug: str, db: Session, exclude_id: Optional[int] = None) -> str:
+    """Return base_slug if unused, otherwise base_slug-2, base_slug-3, etc."""
+    candidate = base_slug
+    counter = 2
+    while True:
+        query = db.query(Product).filter(Product.slug == candidate)
+        if exclude_id is not None:
+            query = query.filter(Product.id != exclude_id)
+        if query.first() is None:
+            return candidate
+        candidate = f"{base_slug}-{counter}"
+        counter += 1
 
 
 @router.get("", response_model=List[ProductResponse])
@@ -58,9 +72,11 @@ def create_product(
             detail={"error": "Name and category are required"}
         )
 
+    slug = _unique_slug(_slugify(product_data.name), db)
+
     product = Product(
         name=product_data.name,
-        slug=_slugify(product_data.name),
+        slug=slug,
         category=product_data.category,
         description=product_data.description or "",
         image_url=product_data.image_url or None
@@ -100,9 +116,10 @@ def update_product(
     if product_data.image_url is not None:
         product.image_url = product_data.image_url
 
-    # Back-fill slug for products that predate this column (slug is None)
+    # Back-fill slug for products that predate this column (slug is None).
+    # Uses exclude_id so the row doesn't collide with itself.
     if product.slug is None and product.name:
-        product.slug = _slugify(product.name)
+        product.slug = _unique_slug(_slugify(product.name), db, exclude_id=product.id)
 
     db.flush()
     db.refresh(product)
