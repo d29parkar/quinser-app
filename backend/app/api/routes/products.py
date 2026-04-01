@@ -1,3 +1,4 @@
+import re
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
@@ -9,6 +10,18 @@ from app.schemas.submission import MessageResponse
 from app.core.security import get_current_admin
 
 router = APIRouter(prefix="/products", tags=["products"])
+
+
+def _slugify(name: str) -> str:
+    """Convert a product name to a URL-safe slug.
+    Must produce identical output to the frontend src/utils/slugify.js.
+    """
+    slug = name.lower()
+    slug = re.sub(r'[()]', '', slug)          # strip parentheses
+    slug = re.sub(r'[^a-z0-9]+', '-', slug)  # non-alphanumeric → dash
+    slug = slug.strip('-')                     # trim leading/trailing dashes
+    slug = re.sub(r'-{2,}', '-', slug)        # collapse multiple dashes
+    return slug
 
 
 @router.get("", response_model=List[ProductResponse])
@@ -47,6 +60,7 @@ def create_product(
 
     product = Product(
         name=product_data.name,
+        slug=_slugify(product_data.name),
         category=product_data.category,
         description=product_data.description or "",
         image_url=product_data.image_url or None
@@ -75,7 +89,8 @@ def update_product(
             detail={"error": "Product not found"}
         )
 
-    # Update fields if provided
+    # Update fields if provided.
+    # Slug is intentionally NOT updated when name changes — existing URLs must stay stable.
     if product_data.name is not None:
         product.name = product_data.name
     if product_data.category is not None:
@@ -84,6 +99,10 @@ def update_product(
         product.description = product_data.description
     if product_data.image_url is not None:
         product.image_url = product_data.image_url
+
+    # Back-fill slug for products that predate this column (slug is None)
+    if product.slug is None and product.name:
+        product.slug = _slugify(product.name)
 
     db.flush()
     db.refresh(product)

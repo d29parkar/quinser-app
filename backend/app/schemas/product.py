@@ -23,6 +23,7 @@ class ProductResponse(BaseModel):
     """Product response model."""
     id: int
     name: str
+    slug: Optional[str] = None
     category: str
     description: Optional[str] = ""
     image_url: Optional[str] = None

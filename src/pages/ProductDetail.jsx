@@ -30,15 +30,17 @@ const ProductDetail = () => {
       return
     }
 
-    // 2. Fall back to DB products
+    // 2. Fall back to DB products.
+    // Match by stored slug first (reliable, name-change-safe),
+    // then fall back to slugify(name) for rows that predate slug storage.
     const fetchDbProduct = async () => {
       try {
         const res = await fetch(`${API_URL}/api/products`)
         if (res.ok) {
           const data = await res.json()
-          const match = data.find(p => slugify(p.name) === slug)
+          const match = data.find(p => p.slug === slug || slugify(p.name) === slug)
           if (match) {
-            setProduct({ ...match, isStatic: false, slug })
+            setProduct({ ...match, isStatic: false, slug: match.slug || slug })
           }
         }
       } catch {

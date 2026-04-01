@@ -11,6 +11,7 @@ class Product(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(String(255), nullable=False)
+    slug: Mapped[str] = mapped_column(String(255), nullable=True, default=None, index=True)
     category: Mapped[str] = mapped_column(String(255), nullable=False)
     description: Mapped[str] = mapped_column(Text, nullable=True, default="")
     image_url: Mapped[str] = mapped_column(Text, nullable=True, default=None)
