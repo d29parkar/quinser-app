@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 
 const API_URL = import.meta.env.VITE_API_URL || 'https://quinser-backend.onrender.com'
+const BASE_URL = 'https://www.quinserpharma.com'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -49,6 +51,16 @@ const Contact = () => {
   }
 
   return (
+    <>
+      <Helmet>
+        <title>Contact Us | Quinser Pharmaceuticals</title>
+        <meta name="description" content="Get in touch with Quinser Pharmaceuticals Private Limited — Navi Mumbai, Maharashtra, India. Enquiries for pharmaceutical products, partnerships, and distribution." />
+        <link rel="canonical" href={`${BASE_URL}/contact`} />
+        <meta property="og:title" content="Contact Us | Quinser Pharmaceuticals" />
+        <meta property="og:description" content="Get in touch with Quinser Pharmaceuticals Private Limited — Navi Mumbai, Maharashtra, India. Enquiries for pharmaceutical products, partnerships, and distribution." />
+        <meta property="og:url" content={`${BASE_URL}/contact`} />
+        <meta property="twitter:url" content={`${BASE_URL}/contact`} />
+      </Helmet>
     <div className="min-h-screen py-12 bg-gradient-to-b from-background via-card-bg to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -248,6 +260,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

@@ -1,6 +1,7 @@
 [
   {
     "id": "static-24",
+    "slug": "sucralser-o-gel",
     "name": "SUCRALSER O gel",
     "category": "Surg / Uro",
     "description": "Each 10 ML of Suspension Contains SUCRALFATE 1 GM + OXETACAINE 20 MG (200 ML) with SUGAR FREE & CHERRY FLAVOUR",
@@ -8,6 +9,7 @@
   },
   {
     "id": "static-36",
+    "slug": "spertoli-sachet",
     "name": "SPERTOLI Sachet",
     "category": "Gynaec / Infertility",
     "description": "First time in India neutraceutical combination for Male fertility. One sachet daily to be taken dissolved in a glass of water",
@@ -15,6 +17,7 @@
   },
   {
     "id": "static-25",
+    "slug": "lithomag-b6-active-syrup",
     "name": "LithoMag B6 Active Syrup",
     "category": "Surg / Uro",
     "description": "Pottasium Citrate, Magnesium Citrate & Active Vitamin B6 (PYRIDOXAL 5 PHOSPHATE) Alkaliser",
@@ -22,6 +25,7 @@
   },
   {
     "id": "static-26",
+    "slug": "gastrosec-dsr-caps",
     "name": "GASTROSEC DSR Caps",
     "category": "Surg / Uro",
     "description": "Each capsule contains Esomeprazole (Enteric coated) 40 mg + Domperidone (SR) 30 MG Capsules",
@@ -29,6 +33,7 @@
   },
   {
     "id": "static-30",
+    "slug": "quinser-sp-tablet",
     "name": "QUINSER SP tablet",
     "category": "Orthopedics",
     "description": "Each tablet contains ACECLOFENAC 100 mg + Paracetamol 325 mg + Serratiopeptidase 15 mg Tablets",
@@ -36,6 +41,7 @@
   },
   {
     "id": "static-28",
+    "slug": "pulmoquin-ab-tablet",
     "name": "PulmoQuin AB Tablet",
     "category": "Phy / Nephro / Cardio",
     "description": "Each film tablet contains Acebrophylline 100 mg + N-Acetylcysteine 600 mg",
@@ -43,6 +49,7 @@
   },
   {
     "id": "static-31",
+    "slug": "fluprit-p-tablet",
     "name": "FLUPRIT- P tablet",
     "category": "Orthopedics",
     "description": "Each tablet contains FLUPIRTINE 100 MG + PARACETAMOLE 325 MG",
@@ -50,6 +57,7 @@
   },
   {
     "id": "static-32",
+    "slug": "carbosync-500-tablet",
     "name": "CarboSync 500 tablet",
     "category": "Phy / Nephro / Cardio",
     "description": "Each tablet contains Sodium bicarbonate 500 mg",
@@ -57,6 +65,7 @@
   },
   {
     "id": "static-33",
+    "slug": "carbosync-ds-tablet",
     "name": "CarboSync DS tablet",
     "category": "Phy / Nephro / Cardio",
     "description": "Each tablet contains Sodium bicarbonate 1000 mg",
@@ -64,6 +73,7 @@
   },
   {
     "id": "static-27",
+    "slug": "tamlocort-s-caps",
     "name": "TAMLOCORT S Caps",
     "category": "Surg / Uro",
     "description": "Each Capsule contains TAMSULOSIN 0.4 MG + DEFLAZACORT 30 MG",
@@ -71,6 +81,7 @@
   },
   {
     "id": "static-29",
+    "slug": "prostocort-d-tabs",
     "name": "PROSTOCORT D tabs",
     "category": "Surg / Uro",
     "description": "Each Tablet contains Tamsulosin 0.4 mg (Modified Release) + Dutasteride 0.5 mg",
@@ -78,6 +89,7 @@
   },
   {
     "id": "static-34",
+    "slug": "osteoquin-tablet",
     "name": "OsteoQuin tablet",
     "category": "Orthopedics",
     "description": "A JOINT MOVE TO MAKE JOINTS MOVE\n\nEach Tablet contains: Collagen Peptide Type 2 40 mg, Chondroitin Sulphate 50 mg, Hyaluronic Acid 50 mg, Glucosamine Sulphate 500 mg, Rosehip Extract 100 mg, Bosewilla Serrata 50 mg and Curcumin 250 mg",
@@ -85,6 +97,7 @@
   },
   {
     "id": "static-17",
+    "slug": "citraflow-sachet",
     "name": "CITRAFLOW Sachet",
     "category": "Gynaec / Infertility",
     "description": "Each 10 GM sachet contains L Arginine 2.25 gm + L Citrulline 750 mg with an Excellent ORANGE FLAVOUR and SUGAR FREE",
@@ -92,6 +105,7 @@
   },
   {
     "id": "static-18",
+    "slug": "mitoquin-300-softgel-caps",
     "name": "MitoQuin 300 Softgel caps",
     "category": "Gynaec / Infertility",
     "description": "Each Softgel Capsule contains Biologically Active form of Co-Enzyme Q10 (UBIQUINOL 300 MG) imported from Kaneka Corporation, JAPAN",
@@ -99,6 +113,7 @@
   },
   {
     "id": "static-35",
+    "slug": "neuroquin-pfs-injection",
     "name": "NeuroQuin PFS Injection",
     "category": "Orthopedics",
     "description": "Each Ampoule contains Mecobalamin 1500 Mcg Injection\n\n1 ML PREFILLED PAINLESS INJECTION SYRINGE - LIGHT SENSITIVE",
@@ -106,6 +121,7 @@
   },
   {
     "id": "static-37",
+    "slug": "inoglide-m-tablet",
     "name": "INOGLIDE- M tablet",
     "category": "Gynaec / Infertility",
     "description": "Each tablet contains Myo-Inositol 550 mg + D-Chiro-Inositol 13.8 mg (40:1 ratio) + Metformin Hcl 500 mg + Mecobalamin 750 mcg + L-Methylefolate calcium 0.5 mg",
@@ -113,6 +129,7 @@
   },
   {
     "id": "static-22",
+    "slug": "lumiser-d3-60k-nanoshot-syp",
     "name": "LUMISER D3 60K Nanoshot Syp",
     "category": "Orthopedics",
     "description": "Each bottle contains Vitamin D3 60K NANOSHOT Ready to drink solution (Cholecalciferole Oral Solution 60000 IU) with SUGAR FREE & PINEAPPLE FLAVOUR",
@@ -120,6 +137,7 @@
   },
   {
     "id": "static-21",
+    "slug": "raftogard-syrup",
     "name": "RAFTOGARD syrup",
     "category": "Surg / Uro",
     "description": "Each 5 ml contains Sodium Alginate 250 mg, Sodium Bicarbonate 133.50 mg & Calcium Carbonate 80 mg in Suspension with SUGAR FREE\n\nRaft forming Antacid with Excellent Pineapple Flavour in 200 ML",
@@ -127,6 +145,7 @@
   },
   {
     "id": "static-19",
+    "slug": "bismag-lc-tablet",
     "name": "BisMag LC tablet",
     "category": "Phy / Nephro / Cardio",
     "description": "Each tablet contains a Combination of Biologically Active form of Co Enzyme Q10 (UBIQUINOL) 50 mg + L Carnitine 500 mg + Magnesium Bisglycinate 360 mg (Active Form)",
@@ -134,6 +153,7 @@
   },
   {
     "id": "static-20",
+    "slug": "cranser-uti-susp",
     "name": "CRANSER UTI Susp",
     "category": "Gynaec / Infertility",
     "description": "Each 15 ML Contains CRANBERRY (Pacran) 200 mg, D-Mannose 300 mg, Pottassium & Magnesium Citrate 978 mg Suspension in 100 ML",
@@ -141,6 +161,7 @@
   },
   {
     "id": "static-23",
+    "slug": "granser-md-mouth-dissolving-tablet",
     "name": "GRANSER MD (Mouth Dissolving tablet)",
     "category": "Gynaec / Infertility",
     "description": "Each tablet contains Granisetron 1 Mg (MOUTH DISSOLVING)",

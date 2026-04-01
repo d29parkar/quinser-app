@@ -1,3 +1,7 @@
+import { Helmet } from 'react-helmet-async'
+
+const BASE_URL = 'https://www.quinserpharma.com'
+
 const Manufacturing = () => {
   const capabilities = [
     {
@@ -50,6 +54,16 @@ const Manufacturing = () => {
   ]
 
   return (
+    <>
+      <Helmet>
+        <title>Manufacturing Capabilities | Quinser Pharmaceuticals</title>
+        <meta name="description" content="Quinser Pharmaceuticals' manufacturing capabilities — WHO-GMP certified production, quality assurance, market-driven product development, and pharmaceutical distribution across India." />
+        <link rel="canonical" href={`${BASE_URL}/manufacturing`} />
+        <meta property="og:title" content="Manufacturing Capabilities | Quinser Pharmaceuticals" />
+        <meta property="og:description" content="Quinser Pharmaceuticals' manufacturing capabilities — WHO-GMP certified production, quality assurance, market-driven product development, and pharmaceutical distribution across India." />
+        <meta property="og:url" content={`${BASE_URL}/manufacturing`} />
+        <meta property="twitter:url" content={`${BASE_URL}/manufacturing`} />
+      </Helmet>
     <div className="min-h-screen py-12 bg-gradient-to-b from-background via-card-bg to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -209,6 +223,7 @@ const Manufacturing = () => {
         </section>
       </div>
     </div>
+    </>
   )
 }
 

@@ -1,3 +1,7 @@
+import { Helmet } from 'react-helmet-async'
+
+const BASE_URL = 'https://www.quinserpharma.com'
+
 const Team = () => {
   const teamMembers = [
     {
@@ -39,6 +43,16 @@ const Team = () => {
   ]
 
   return (
+    <>
+      <Helmet>
+        <title>Our Leadership Team | Quinser Pharmaceuticals</title>
+        <meta name="description" content="Meet the 6 experienced directors behind Quinser Pharmaceuticals — over 30 years of combined pharmaceutical expertise in sales, distribution, and operations across India." />
+        <link rel="canonical" href={`${BASE_URL}/team`} />
+        <meta property="og:title" content="Our Leadership Team | Quinser Pharmaceuticals" />
+        <meta property="og:description" content="Meet the 6 experienced directors behind Quinser Pharmaceuticals — over 30 years of combined pharmaceutical expertise in sales, distribution, and operations across India." />
+        <meta property="og:url" content={`${BASE_URL}/team`} />
+        <meta property="twitter:url" content={`${BASE_URL}/team`} />
+      </Helmet>
     <div className="min-h-screen py-12 bg-gradient-to-b from-background via-card-bg to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -101,6 +115,7 @@ const Team = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

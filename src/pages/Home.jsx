@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
+
+const BASE_URL = 'https://www.quinserpharma.com'
 
 const Home = () => {
   const founders = [
@@ -41,6 +44,14 @@ const Home = () => {
   ]
 
   return (
+    <>
+      <Helmet>
+        <title>Quinser Pharmaceuticals | Quality, Integrity &amp; Service</title>
+        <meta name="description" content="Quinser Pharmaceuticals Pvt. Ltd. – Navi Mumbai's trusted pharmaceutical partner. 35+ years of expertise, WHO-GMP certified manufacturing. Supplying quality medicines across India." />
+        <link rel="canonical" href={BASE_URL} />
+        <meta property="og:url" content={BASE_URL} />
+        <meta property="twitter:url" content={BASE_URL} />
+      </Helmet>
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-primary/[0.04] to-background py-20 md:py-28 overflow-hidden">
@@ -185,6 +196,7 @@ const Home = () => {
       </section>
 
     </div>
+    </>
   )
 }
 
