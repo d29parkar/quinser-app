@@ -1,35 +1,40 @@
 import { useState, useEffect } from 'react'
+import staticProducts from '../data/products.json'
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [dbProducts, setDbProducts] = useState([])
+  const [dbLoading, setDbLoading] = useState(true)
 
   const API_URL = import.meta.env.VITE_API_URL || 'https://quinser-backend.onrender.com'
 
   useEffect(() => {
-    fetchProducts()
+    fetchDbProducts()
   }, [])
 
-  const fetchProducts = async () => {
+  const fetchDbProducts = async () => {
     try {
       const response = await fetch(`${API_URL}/api/products`)
       if (response.ok) {
         const data = await response.json()
-        setProducts(data)
+        setDbProducts(data)
       }
     } catch (error) {
       console.error('Failed to fetch products:', error)
     } finally {
-      setLoading(false)
+      setDbLoading(false)
     }
   }
 
-  const categories = ['All', ...new Set(products.map(product => product.category))]
+  // Merge static products first, then any DB-only products.
+  // Static products use string IDs (e.g. "static-24"); DB products use numeric IDs.
+  const allProducts = [...staticProducts, ...dbProducts]
+
+  const categories = ['All', ...new Set(allProducts.map(p => p.category))]
 
   const filteredProducts = selectedCategory === 'All'
-    ? products
-    : products.filter(product => product.category === selectedCategory)
+    ? allProducts
+    : allProducts.filter(p => p.category === selectedCategory)
 
   return (
     <div className="min-h-screen py-12 bg-gradient-to-b from-background via-card-bg to-background">
@@ -60,31 +65,23 @@ const Products = () => {
         </div>
 
         {/* Products Grid */}
-        {loading ? (
-          <div className="text-center py-12">
-            <p className="text-text-secondary text-lg">Loading products...</p>
+        {dbLoading && dbProducts.length === 0 ? (
+          // Show static products immediately; show a subtle spinner while DB loads
+          <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {staticProducts
+                .filter(p => selectedCategory === 'All' || p.category === selectedCategory)
+                .map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+            </div>
+            <p className="text-center text-text-secondary text-sm mt-8 animate-pulse">Loading more products…</p>
           </div>
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProducts.map((product) => (
-                <div
-                  key={product.id}
-                  className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-border hover:border-primary/20"
-                >
-                  <div className="mb-4 flex items-center gap-2 flex-wrap">
-                    <span className="inline-block px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs font-semibold rounded-full border border-primary/20">
-                      {product.category}
-                    </span>
-                    {product.dosage_form && (
-                      <span className="inline-block px-3 py-1 bg-gradient-to-r from-accent/10 to-primary/10 text-accent text-xs font-semibold rounded-full border border-accent/20">
-                        {product.dosage_form}
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-semibold text-text mb-3">{product.name}</h3>
-                  <p className="text-text-secondary leading-relaxed">{product.description}</p>
-                </div>
+                <ProductCard key={product.id} product={product} />
               ))}
             </div>
 
@@ -100,5 +97,33 @@ const Products = () => {
   )
 }
 
-export default Products
+const ProductCard = ({ product }) => {
+  // Static products have an `image` field (filename), DB products have `image_url` (full URL).
+  const imageSrc = product.image_url || (product.image ? `/images/${product.image}` : null)
 
+  return (
+    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-border hover:border-primary/20 overflow-hidden flex flex-col">
+      {imageSrc && (
+        <div className="h-48 w-full overflow-hidden bg-gray-50 flex items-center justify-center">
+          <img
+            src={imageSrc}
+            alt={product.name}
+            className="w-full h-full object-contain p-2"
+            onError={(e) => { e.currentTarget.parentElement.style.display = 'none' }}
+          />
+        </div>
+      )}
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="mb-4">
+          <span className="inline-block px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-xs font-semibold rounded-full border border-primary/20">
+            {product.category}
+          </span>
+        </div>
+        <h3 className="text-xl font-semibold text-text mb-3">{product.name}</h3>
+        <p className="text-text-secondary leading-relaxed text-sm flex-grow">{product.description}</p>
+      </div>
+    </div>
+  )
+}
+
+export default Products

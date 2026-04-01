@@ -1,82 +1,149 @@
 [
   {
-    "id": 1,
-    "name": "Antibiotic Capsules 500mg",
-    "category": "Antibiotics",
-    "description": "Broad-spectrum antibiotic for treating bacterial infections. WHO-GMP certified manufacturing."
+    "id": "static-24",
+    "name": "SUCRALSER O gel",
+    "category": "Surg / Uro",
+    "description": "Each 10 ML of Suspension Contains SUCRALFATE 1 GM + OXETACAINE 20 MG (200 ML) with SUGAR FREE & CHERRY FLAVOUR",
+    "image": "sucralser-O suspension.jpeg"
   },
   {
-    "id": 2,
-    "name": "Pain Relief Tablets",
-    "category": "Analgesics",
-    "description": "Fast-acting pain relief medication for acute and chronic pain management."
+    "id": "static-36",
+    "name": "SPERTOLI Sachet",
+    "category": "Gynaec / Infertility",
+    "description": "First time in India neutraceutical combination for Male fertility. One sachet daily to be taken dissolved in a glass of water",
+    "image": "spertoli.jpeg"
   },
   {
-    "id": 3,
-    "name": "Cardiovascular Support",
-    "category": "Cardiology",
-    "description": "Advanced cardiovascular medication for heart health and blood pressure management."
+    "id": "static-25",
+    "name": "LithoMag B6 Active Syrup",
+    "category": "Surg / Uro",
+    "description": "Pottasium Citrate, Magnesium Citrate & Active Vitamin B6 (PYRIDOXAL 5 PHOSPHATE) Alkaliser",
+    "image": "lithomag syrup B6.jpeg"
   },
   {
-    "id": 4,
-    "name": "Diabetes Management",
-    "category": "Endocrinology",
-    "description": "Comprehensive diabetes care solution with controlled release formulation."
+    "id": "static-26",
+    "name": "GASTROSEC DSR Caps",
+    "category": "Surg / Uro",
+    "description": "Each capsule contains Esomeprazole (Enteric coated) 40 mg + Domperidone (SR) 30 MG Capsules",
+    "image": "gastrosec DSR.jpeg"
   },
   {
-    "id": 5,
-    "name": "Respiratory Inhaler",
-    "category": "Pulmonology",
-    "description": "Effective bronchodilator for asthma and chronic obstructive pulmonary disease."
-  },
-  {
-    "id": 6,
-    "name": "Gastrointestinal Relief",
-    "category": "Gastroenterology",
-    "description": "Gentle and effective treatment for digestive disorders and acid reflux."
-  },
-  {
-    "id": 7,
-    "name": "Multivitamin Complex",
-    "category": "Nutritional Supplements",
-    "description": "Comprehensive multivitamin formula with essential vitamins and minerals."
-  },
-  {
-    "id": 8,
-    "name": "Antifungal Cream",
-    "category": "Dermatology",
-    "description": "Topical antifungal treatment for skin infections and fungal conditions."
-  },
-  {
-    "id": 9,
-    "name": "Antihistamine Syrup",
-    "category": "Allergy",
-    "description": "Fast-acting antihistamine for allergy relief and symptom management."
-  },
-  {
-    "id": 10,
-    "name": "Bone Health Supplement",
+    "id": "static-30",
+    "name": "QUINSER SP tablet",
     "category": "Orthopedics",
-    "description": "Calcium and vitamin D supplement for maintaining bone strength and density."
+    "description": "Each tablet contains ACECLOFENAC 100 mg + Paracetamol 325 mg + Serratiopeptidase 15 mg Tablets",
+    "image": "quinser-sp tablets.jpeg"
   },
   {
-    "id": 11,
-    "name": "Eye Drops Solution",
-    "category": "Ophthalmology",
-    "description": "Sterile ophthalmic solution for dry eyes and eye irritation relief."
+    "id": "static-28",
+    "name": "PulmoQuin AB Tablet",
+    "category": "Phy / Nephro / Cardio",
+    "description": "Each film tablet contains Acebrophylline 100 mg + N-Acetylcysteine 600 mg",
+    "image": "pulmoquin-AB.jpeg"
   },
   {
-    "id": 12,
-    "name": "Antiviral Tablets",
-    "category": "Antivirals",
-    "description": "Effective antiviral medication for treating viral infections and boosting immunity."
+    "id": "static-31",
+    "name": "FLUPRIT- P tablet",
+    "category": "Orthopedics",
+    "description": "Each tablet contains FLUPIRTINE 100 MG + PARACETAMOLE 325 MG",
+    "image": "fluprit P.jpeg"
   },
   {
-    "id": 13,
-    "name": "Fertility Support Formula",
-    "category": "Fertility Products",
-    "description": "Comprehensive fertility support supplement designed to enhance reproductive health and support conception."
+    "id": "static-32",
+    "name": "CarboSync 500 tablet",
+    "category": "Phy / Nephro / Cardio",
+    "description": "Each tablet contains Sodium bicarbonate 500 mg",
+    "image": "carbosync 500.jpeg"
+  },
+  {
+    "id": "static-33",
+    "name": "CarboSync DS tablet",
+    "category": "Phy / Nephro / Cardio",
+    "description": "Each tablet contains Sodium bicarbonate 1000 mg",
+    "image": "carbosync DS.jpeg"
+  },
+  {
+    "id": "static-27",
+    "name": "TAMLOCORT S Caps",
+    "category": "Surg / Uro",
+    "description": "Each Capsule contains TAMSULOSIN 0.4 MG + DEFLAZACORT 30 MG",
+    "image": "tamlocort S .jpeg"
+  },
+  {
+    "id": "static-29",
+    "name": "PROSTOCORT D tabs",
+    "category": "Surg / Uro",
+    "description": "Each Tablet contains Tamsulosin 0.4 mg (Modified Release) + Dutasteride 0.5 mg",
+    "image": "prostocort-D.jpeg"
+  },
+  {
+    "id": "static-34",
+    "name": "OsteoQuin tablet",
+    "category": "Orthopedics",
+    "description": "A JOINT MOVE TO MAKE JOINTS MOVE\n\nEach Tablet contains: Collagen Peptide Type 2 40 mg, Chondroitin Sulphate 50 mg, Hyaluronic Acid 50 mg, Glucosamine Sulphate 500 mg, Rosehip Extract 100 mg, Bosewilla Serrata 50 mg and Curcumin 250 mg",
+    "image": "osteoquin tablets.jpeg"
+  },
+  {
+    "id": "static-17",
+    "name": "CITRAFLOW Sachet",
+    "category": "Gynaec / Infertility",
+    "description": "Each 10 GM sachet contains L Arginine 2.25 gm + L Citrulline 750 mg with an Excellent ORANGE FLAVOUR and SUGAR FREE",
+    "image": "citraflow sachets.jpeg"
+  },
+  {
+    "id": "static-18",
+    "name": "MitoQuin 300 Softgel caps",
+    "category": "Gynaec / Infertility",
+    "description": "Each Softgel Capsule contains Biologically Active form of Co-Enzyme Q10 (UBIQUINOL 300 MG) imported from Kaneka Corporation, JAPAN",
+    "image": "mitoquin 300.jpeg"
+  },
+  {
+    "id": "static-35",
+    "name": "NeuroQuin PFS Injection",
+    "category": "Orthopedics",
+    "description": "Each Ampoule contains Mecobalamin 1500 Mcg Injection\n\n1 ML PREFILLED PAINLESS INJECTION SYRINGE - LIGHT SENSITIVE",
+    "image": "neuroquin PFS.jpeg"
+  },
+  {
+    "id": "static-37",
+    "name": "INOGLIDE- M tablet",
+    "category": "Gynaec / Infertility",
+    "description": "Each tablet contains Myo-Inositol 550 mg + D-Chiro-Inositol 13.8 mg (40:1 ratio) + Metformin Hcl 500 mg + Mecobalamin 750 mcg + L-Methylefolate calcium 0.5 mg",
+    "image": "inoglide-M tablets.jpeg"
+  },
+  {
+    "id": "static-22",
+    "name": "LUMISER D3 60K Nanoshot Syp",
+    "category": "Orthopedics",
+    "description": "Each bottle contains Vitamin D3 60K NANOSHOT Ready to drink solution (Cholecalciferole Oral Solution 60000 IU) with SUGAR FREE & PINEAPPLE FLAVOUR",
+    "image": "lumiser-d3 60k.jpeg"
+  },
+  {
+    "id": "static-21",
+    "name": "RAFTOGARD syrup",
+    "category": "Surg / Uro",
+    "description": "Each 5 ml contains Sodium Alginate 250 mg, Sodium Bicarbonate 133.50 mg & Calcium Carbonate 80 mg in Suspension with SUGAR FREE\n\nRaft forming Antacid with Excellent Pineapple Flavour in 200 ML",
+    "image": "raftoguard suspension.jpeg"
+  },
+  {
+    "id": "static-19",
+    "name": "BisMag LC tablet",
+    "category": "Phy / Nephro / Cardio",
+    "description": "Each tablet contains a Combination of Biologically Active form of Co Enzyme Q10 (UBIQUINOL) 50 mg + L Carnitine 500 mg + Magnesium Bisglycinate 360 mg (Active Form)",
+    "image": "bismag-lc tablets.jpeg"
+  },
+  {
+    "id": "static-20",
+    "name": "CRANSER UTI Susp",
+    "category": "Gynaec / Infertility",
+    "description": "Each 15 ML Contains CRANBERRY (Pacran) 200 mg, D-Mannose 300 mg, Pottassium & Magnesium Citrate 978 mg Suspension in 100 ML",
+    "image": "cranser uti.jpeg"
+  },
+  {
+    "id": "static-23",
+    "name": "GRANSER MD (Mouth Dissolving tablet)",
+    "category": "Gynaec / Infertility",
+    "description": "Each tablet contains Granisetron 1 Mg (MOUTH DISSOLVING)",
+    "image": "granser-md.jpeg"
   }
 ]
-
-

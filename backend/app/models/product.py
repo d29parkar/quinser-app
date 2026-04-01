@@ -13,6 +13,7 @@ class Product(Base):
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     category: Mapped[str] = mapped_column(String(255), nullable=False)
     description: Mapped[str] = mapped_column(Text, nullable=True, default="")
+    image_url: Mapped[str] = mapped_column(Text, nullable=True, default=None)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         server_default=func.now(),

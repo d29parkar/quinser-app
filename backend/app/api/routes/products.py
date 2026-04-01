@@ -48,7 +48,8 @@ def create_product(
     product = Product(
         name=product_data.name,
         category=product_data.category,
-        description=product_data.description or ""
+        description=product_data.description or "",
+        image_url=product_data.image_url or None
     )
 
     db.add(product)
@@ -81,6 +82,8 @@ def update_product(
         product.category = product_data.category
     if product_data.description is not None:
         product.description = product_data.description
+    if product_data.image_url is not None:
+        product.image_url = product_data.image_url
 
     db.flush()
     db.refresh(product)

@@ -1,15 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import { uploadProductImage } from '../../lib/supabase'
 
 const Products = () => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
   const [editingProduct, setEditingProduct] = useState(null)
-  const [formData, setFormData] = useState({ name: '', category: '', dosage_form: '', description: '' })
+  const [formData, setFormData] = useState({ name: '', category: '', description: '', image_url: '' })
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
+  const [imageFile, setImageFile] = useState(null)
+  const [imagePreview, setImagePreview] = useState(null)
+  const [uploading, setUploading] = useState(false)
+  const fileInputRef = useRef(null)
 
   const { token, logout, API_URL } = useAuth()
 
@@ -39,10 +44,33 @@ const Products = () => {
     }
   }
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+    setImageFile(file)
+    setImagePreview(URL.createObjectURL(file))
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
     setSaving(true)
+
+    let finalImageUrl = formData.image_url
+
+    // If a new image file was selected, upload it first
+    if (imageFile) {
+      setUploading(true)
+      try {
+        finalImageUrl = await uploadProductImage(imageFile)
+      } catch (uploadErr) {
+        setError(uploadErr.message)
+        setSaving(false)
+        setUploading(false)
+        return
+      }
+      setUploading(false)
+    }
 
     try {
       const url = editingProduct
@@ -55,7 +83,7 @@ const Products = () => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({ ...formData, image_url: finalImageUrl || null })
       })
 
       if (response.ok) {
@@ -93,7 +121,9 @@ const Products = () => {
 
   const openAddModal = () => {
     setEditingProduct(null)
-    setFormData({ name: '', category: '', dosage_form: '', description: '' })
+    setFormData({ name: '', category: '', description: '', image_url: '' })
+    setImageFile(null)
+    setImagePreview(null)
     setError('')
     setShowModal(true)
   }
@@ -103,9 +133,11 @@ const Products = () => {
     setFormData({
       name: product.name,
       category: product.category,
-      dosage_form: product.dosage_form || '',
-      description: product.description || ''
+      description: product.description || '',
+      image_url: product.image_url || ''
     })
+    setImageFile(null)
+    setImagePreview(product.image_url || null)
     setError('')
     setShowModal(true)
   }
@@ -113,7 +145,9 @@ const Products = () => {
   const closeModal = () => {
     setShowModal(false)
     setEditingProduct(null)
-    setFormData({ name: '', category: '', dosage_form: '', description: '' })
+    setFormData({ name: '', category: '', description: '', image_url: '' })
+    setImageFile(null)
+    setImagePreview(null)
     setError('')
   }
 
@@ -175,9 +209,9 @@ const Products = () => {
             <table className="w-full">
               <thead className="bg-gray-50 border-b border-border">
                 <tr>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-text">Image</th>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-text">Name</th>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-text">Category</th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-text">Dosage Form</th>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-text">Description</th>
                   <th className="px-6 py-4 text-right text-sm font-semibold text-text">Actions</th>
                 </tr>
@@ -185,14 +219,24 @@ const Products = () => {
               <tbody className="divide-y divide-border">
                 {products.map((product) => (
                   <tr key={product.id} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4">
+                      {product.image_url ? (
+                        <img
+                          src={product.image_url}
+                          alt={product.name}
+                          className="h-12 w-12 object-contain rounded"
+                        />
+                      ) : (
+                        <div className="h-12 w-12 bg-gray-100 rounded flex items-center justify-center text-gray-400 text-xs">
+                          No img
+                        </div>
+                      )}
+                    </td>
                     <td className="px-6 py-4 text-text font-medium">{product.name}</td>
                     <td className="px-6 py-4">
                       <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">
                         {product.category}
                       </span>
-                    </td>
-                    <td className="px-6 py-4 text-text-secondary text-sm">
-                      {product.dosage_form}
                     </td>
                     <td className="px-6 py-4 text-text-secondary text-sm max-w-md truncate">
                       {product.description}
@@ -222,7 +266,7 @@ const Products = () => {
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div className="px-6 py-4 border-b border-border">
               <h2 className="text-xl font-semibold text-text">
                 {editingProduct ? 'Edit Product' : 'Add New Product'}
@@ -264,17 +308,6 @@ const Products = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-text mb-2">Dosage Form</label>
-                <input
-                  type="text"
-                  value={formData.dosage_form}
-                  onChange={(e) => setFormData({ ...formData, dosage_form: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="e.g., Tablet, Capsule, Syrup, Injection"
-                />
-              </div>
-
-              <div>
                 <label className="block text-sm font-medium text-text mb-2">Description</label>
                 <textarea
                   value={formData.description}
@@ -283,6 +316,65 @@ const Products = () => {
                   className="w-full px-4 py-3 rounded-xl border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
                   placeholder="Enter product description"
                 />
+              </div>
+
+              {/* Image Upload */}
+              <div>
+                <label className="block text-sm font-medium text-text mb-2">Product Image</label>
+
+                {/* Preview */}
+                {imagePreview && (
+                  <div className="mb-3 flex items-center gap-3">
+                    <img
+                      src={imagePreview}
+                      alt="Preview"
+                      className="h-20 w-20 object-contain border border-border rounded-lg bg-gray-50 p-1"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setImageFile(null)
+                        setImagePreview(null)
+                        setFormData({ ...formData, image_url: '' })
+                        if (fileInputRef.current) fileInputRef.current.value = ''
+                      }}
+                      className="text-sm text-red-500 hover:text-red-700"
+                    >
+                      Remove image
+                    </button>
+                  </div>
+                )}
+
+                {/* File picker */}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="w-full text-sm text-text-secondary file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer"
+                />
+                <p className="text-xs text-text-secondary mt-1">
+                  Upload uploads to Supabase Storage. Requires <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> env vars and a public bucket named <code>product-images</code>.
+                </p>
+
+                {/* Or paste URL directly */}
+                {!imageFile && (
+                  <div className="mt-3">
+                    <label className="block text-xs font-medium text-text-secondary mb-1">
+                      Or paste an image URL directly
+                    </label>
+                    <input
+                      type="url"
+                      value={formData.image_url}
+                      onChange={(e) => {
+                        setFormData({ ...formData, image_url: e.target.value })
+                        setImagePreview(e.target.value || null)
+                      }}
+                      className="w-full px-3 py-2 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+                      placeholder="https://..."
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="flex justify-end space-x-3 pt-4">
@@ -295,10 +387,10 @@ const Products = () => {
                 </button>
                 <button
                   type="submit"
-                  disabled={saving}
+                  disabled={saving || uploading}
                   className="px-6 py-2 bg-gradient-to-r from-primary to-primary-light text-white rounded-xl font-medium hover:from-primary-dark hover:to-primary transition-all disabled:opacity-50"
                 >
-                  {saving ? 'Saving...' : (editingProduct ? 'Update' : 'Add Product')}
+                  {uploading ? 'Uploading image…' : saving ? 'Saving…' : (editingProduct ? 'Update' : 'Add Product')}
                 </button>
               </div>
             </form>

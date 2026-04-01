@@ -8,6 +8,7 @@ class ProductCreate(BaseModel):
     name: str
     category: str
     description: Optional[str] = ""
+    image_url: Optional[str] = None
 
 
 class ProductUpdate(BaseModel):
@@ -15,6 +16,7 @@ class ProductUpdate(BaseModel):
     name: Optional[str] = None
     category: Optional[str] = None
     description: Optional[str] = None
+    image_url: Optional[str] = None
 
 
 class ProductResponse(BaseModel):
@@ -23,6 +25,7 @@ class ProductResponse(BaseModel):
     name: str
     category: str
     description: Optional[str] = ""
+    image_url: Optional[str] = None
     created_at: datetime
     updated_at: datetime
 
