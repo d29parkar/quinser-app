@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import staticProducts from '../data/products.json'
 import { slugify } from '../utils/slugify'
 
 const BASE_URL = 'https://www.quinserpharma.com'
@@ -17,30 +16,18 @@ const CATEGORY_LABELS = {
 
 const ProductDetail = () => {
   const { slug } = useParams()
-  const navigate = useNavigate()
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // 1. Check static JSON first (no network needed)
-    const staticMatch = staticProducts.find(p => p.slug === slug)
-    if (staticMatch) {
-      setProduct({ ...staticMatch, isStatic: true })
-      setLoading(false)
-      return
-    }
-
-    // 2. Fall back to DB products.
-    // Match by stored slug first (reliable, name-change-safe),
-    // then fall back to slugify(name) for rows that predate slug storage.
-    const fetchDbProduct = async () => {
+    const fetchProduct = async () => {
       try {
         const res = await fetch(`${API_URL}/api/products`)
         if (res.ok) {
           const data = await res.json()
           const match = data.find(p => p.slug === slug || slugify(p.name) === slug)
           if (match) {
-            setProduct({ ...match, isStatic: false, slug: match.slug || slug })
+            setProduct({ ...match, slug: match.slug || slug })
           }
         }
       } catch {
@@ -49,7 +36,7 @@ const ProductDetail = () => {
         setLoading(false)
       }
     }
-    fetchDbProduct()
+    fetchProduct()
   }, [slug])
 
   if (loading) {
@@ -70,14 +57,13 @@ const ProductDetail = () => {
   }
 
   const imageSrc = product.image_url || (product.image ? `/images/${product.image}` : null)
-  const canonicalUrl = `${BASE_URL}/products/${product.slug || slug}`
+  const canonicalUrl = `${BASE_URL}/products/${product.slug}`
   const fullImageUrl = imageSrc
     ? (imageSrc.startsWith('http') ? imageSrc : `${BASE_URL}${imageSrc}`)
     : `${BASE_URL}/assets/logo.png`
   const categoryLabel = CATEGORY_LABELS[product.category] || product.category
   const metaDescription = `${product.name} by Quinser Pharmaceuticals — ${categoryLabel}. ${product.description?.replace(/\n+/g, ' ').slice(0, 140)}`
 
-  // JSON-LD Product schema
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -97,7 +83,6 @@ const ProductDetail = () => {
     category: categoryLabel,
   }
 
-  // Breadcrumb JSON-LD
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -125,7 +110,6 @@ const ProductDetail = () => {
         <meta property="twitter:image" content={fullImageUrl} />
       </Helmet>
 
-      {/* JSON-LD structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
@@ -138,7 +122,6 @@ const ProductDetail = () => {
       <div className="min-h-screen py-12 bg-gradient-to-b from-background via-card-bg to-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Breadcrumb nav */}
           <nav className="mb-8 text-sm text-text-secondary flex items-center gap-2" aria-label="Breadcrumb">
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>
             <span>/</span>
@@ -148,7 +131,6 @@ const ProductDetail = () => {
           </nav>
 
           <div className="bg-white rounded-2xl shadow-md border border-border overflow-hidden">
-            {/* Product image */}
             {imageSrc && (
               <div className="w-full bg-gray-50 flex items-center justify-center p-8 border-b border-border">
                 <img
@@ -161,17 +143,14 @@ const ProductDetail = () => {
             )}
 
             <div className="p-8 md:p-12">
-              {/* Category */}
               <div className="mb-4">
                 <span className="inline-block px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-sm font-semibold rounded-full border border-primary/20">
                   {categoryLabel}
                 </span>
               </div>
 
-              {/* Product name — h1 for SEO */}
               <h1 className="text-3xl md:text-4xl font-bold text-text mb-6">{product.name}</h1>
 
-              {/* Composition / description */}
               <div className="mb-8">
                 <h2 className="text-lg font-semibold text-text mb-3">Composition</h2>
                 <p className="text-text-secondary leading-relaxed whitespace-pre-line">
@@ -179,7 +158,6 @@ const ProductDetail = () => {
                 </p>
               </div>
 
-              {/* Manufacturer info */}
               <div className="bg-gray-50 rounded-xl p-6 border border-border">
                 <p className="text-sm text-text-secondary">
                   <span className="font-semibold text-text">Marketed by:</span>{' '}
@@ -191,7 +169,6 @@ const ProductDetail = () => {
                 </p>
               </div>
 
-              {/* Back link */}
               <div className="mt-8">
                 <Link
                   to="/products"
